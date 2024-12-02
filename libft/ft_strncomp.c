@@ -6,7 +6,7 @@
 /*   By: mcuello <mcuello@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/30 19:52:44 by mcuello           #+#    #+#             */
-/*   Updated: 2024/11/30 19:52:44 by mcuello          ###   ########.fr       */
+/*   Updated: 2024/12/02 12:11:24 by mcuello          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	ft_strncomp(char *str1, char *str2, size_t n)
 	i = 0;
 	if (n == 0)
 		return (0);
-	while((str1[i] || str2[i]) && i < n)
+	while ((str1[i] || str2[i]) && i < n)
 	{
 		if (str1[i] != str2[i])
 			return (str1[i] - str2[i]);

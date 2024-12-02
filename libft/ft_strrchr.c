@@ -6,13 +6,13 @@
 /*   By: mcuello <mcuello@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/30 19:05:37 by mcuello           #+#    #+#             */
-/*   Updated: 2024/11/30 19:05:37 by mcuello          ###   ########.fr       */
+/*   Updated: 2024/12/02 12:12:21 by mcuello          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strrchr(cons char *s, int c)
+char	*ft_strrchr(const char *s, int c)
 {
 	int	last;
 
@@ -24,4 +24,3 @@ char	*ft_strrchr(cons char *s, int c)
 	}
 	return (NULL);
 }
- 
