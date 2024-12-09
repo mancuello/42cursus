@@ -6,7 +6,7 @@
 /*   By: mcuello <mcuello@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/30 20:34:32 by mcuello           #+#    #+#             */
-/*   Updated: 2024/11/30 20:34:32 by mcuello          ###   ########.fr       */
+/*   Updated: 2024/12/09 16:55:00 by mcuello          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,19 +34,19 @@ char	*ft_strnstr(const char *big, const char *little, size_t len)
 	return (0);
 }
 
-// #include <stdio.h>
-// #include <string.h>
+/* #include <stdio.h>
+#include <string.h>
 
-// int main() {
-//     const char big[] = "Hello, world!";
-//     const char little[] = "world";
-//     char *result;
+int main() {
+    const char big[] = "Hello, world!";
+    const char little[] = "world";
+    char *result;
 
-//     result = ft_strnstr(big, little, 10);  // Busca en los primeros 10 caracteres
-//     if (result)
-//         printf("Subcadena encontrada: %s\n", result);
-//     else
-//         printf("Subcadena no encontrada.\n");
+    result = ft_strnstr(big, little, 10);  // Busca en los primeros 10 caracteres
+    if (result)
+        printf("Subcadena encontrada: %s\n", result);
+    else
+        printf("Subcadena no encontrada.\n");
 
-//     return 0;
-// }
+    return 0;
+} */
