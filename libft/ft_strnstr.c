@@ -6,56 +6,47 @@
 /*   By: mcuello <mcuello@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/30 20:34:32 by mcuello           #+#    #+#             */
-/*   Updated: 2024/12/02 17:55:48 by mcuello          ###   ########.fr       */
+/*   Updated: 2024/11/30 20:34:32 by mcuello          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strnstr(const char *str1, const char *str2, size_t len)
+char	*ft_strnstr(const char *big, const char *little, size_t len)
 {
 	size_t	i;
 	size_t	j;
-	size_t	count;
 
-	count = 0;
-	if (!*str2)
-		return ((char *)str1);
+	if (!*little)
+		return ((char *)big);
 	i = 0;
 	j = 0;
-	while (i < len && str1[i] && str2[j])
+	while (big[i] && i < len && little[j])
 	{
-		if (str1[i] == str2[j])
-		{
-			i++;
+		while (big[i + j] == little[j] && i + j < len)
 			j++;
-			count++;
-			if (count == ft_strlen(str2))
-			{
-				i -= count;
-				return ((char *)str1 + i);
-			}
-		}
-		else
-		{
-			i++;
-			count = 0;
-		}
+		if (!little[j])
+		//Analiza si llegó al final de la cadena, indicador
+		//de que recorrió todo el string.
+			return ((char *)(big + i));
+		i++;
 	}
-	return (NULL);
+	return (0);
 }
 
+// #include <stdio.h>
+// #include <string.h>
+
 // int main() {
-// 	const char *haystack = "hola esto es un mensaje"; // Cadena vacC-a
-// 	const char *needle1 = "esto";  // Cadena vacC-a
-// 	//const char *needle2 = "esun"; // Cadena no vacC-a
+//     const char big[] = "Hello, world!";
+//     const char little[] = "world";
+//     char *result;
 
-// 	// Caso 1: needle tambiC)n estC! vacC-o
-// 	const char *result1 = strnstr(haystack, needle1, 8);
-// 	printf("needle1 deberia encontrar: '%s'\n", result1);
+//     result = ft_strnstr(big, little, 10);  // Busca en los primeros 10 caracteres
+//     if (result)
+//         printf("Subcadena encontrada: %s\n", result);
+//     else
+//         printf("Subcadena no encontrada.\n");
 
-// 	// Caso 2: needle no estC! vacC-o
-// 	//char *result2 = strnstr(haystack, needle2, 16);
-// 	//printf("needle2 no deberia salir: '%s'\n", result2);
-// 	return 0;
+//     return 0;
 // }
