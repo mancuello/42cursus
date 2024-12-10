@@ -15,7 +15,39 @@
 char	*ft_strjoin(char const *s1, char const *s2)
 {
 	char	*dest;
+	char	*cpy;
+	size_t	s1_len;
+	size_t	s2_len;
 	
 	s1_len = ft_strlen(s1);
-	dest = ft_calloc(total_len, sizeof(char));
+	s2_len = ft_strlen(s2);
+	dest = ft_calloc(s1_len + s2_len + 1, sizeof(char));
+
+	if (!dest)
+		return (NULL);
+	cpy = dest;
+	while (*s1)
+		*dest++ = *s1++;
+	while (*s2)
+		*dest++ = *s2++;
+	*dest = '\0';
+	return (cpy);
 }
+
+/* int	main(void)
+{
+	char	*s1 = "Hola, ";
+	char	*s2 = "mundo!";
+	char	*result;
+
+	result = ft_strjoin(s1, s2);
+	if (result)
+	{
+		printf("Resultado de ft_strjoin: %s\n", result);
+		free(result);
+	}
+	else
+		printf("Error al unir las cadenas.\n");
+
+	return (0);
+} */
