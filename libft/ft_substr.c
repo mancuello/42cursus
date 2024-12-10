@@ -6,7 +6,7 @@
 /*   By: mcuello <mcuello@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 15:06:56 by mcuello           #+#    #+#             */
-/*   Updated: 2024/12/09 16:39:43 by mcuello          ###   ########.fr       */
+/*   Updated: 2024/12/10 18:11:14 by mcuello          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	if (len > src_len - start)
 		len = src_len - start;
 	i = 0;
-	while(i < len)
+	while (i < len)
 	{
 		sub[i] = s[start + i];
 		i++;
@@ -37,7 +37,6 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	sub[i] = '\0';
 	return (sub);
 }
-
 
 /* #include <stdio.h>
 #include <stdlib.h>

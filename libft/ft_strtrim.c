@@ -6,7 +6,7 @@
 /*   By: mcuello <mcuello@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 23:57:38 by mcuello           #+#    #+#             */
-/*   Updated: 2024/12/09 23:57:38 by mcuello          ###   ########.fr       */
+/*   Updated: 2024/12/10 18:12:48 by mcuello          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,10 +28,11 @@ char	*ft_strtrim(char const *s1, char const *set)
 	unsigned int	s1_len;
 	unsigned int	start;
 
+	start = 0;
 	while (ft_include(set, s1[start]))
 		start++;
 	s1_len = ft_strlen(s1);
-	while (ft_include(set, s1[s1_len - 1]) && s1_len > start)	
+	while (ft_include(set, s1[s1_len - 1]) && s1_len > start)
 		s1_len--;
 	return (ft_substr(s1, start, s1_len - start));
 }
@@ -39,7 +40,7 @@ char	*ft_strtrim(char const *s1, char const *set)
 /* int main(void)
 {
     char *s1 = "   xxxHexllo Worldxxx   ";
-    char *set = " xxxdxxH";
+    char *set = " xxx";
     char *result = ft_strtrim(s1, set);
 
     if (result)

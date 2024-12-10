@@ -6,7 +6,7 @@
 /*   By: mcuello <mcuello@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/06 22:58:47 by mcuello           #+#    #+#             */
-/*   Updated: 2024/12/06 22:58:47 by mcuello          ###   ########.fr       */
+/*   Updated: 2024/12/10 18:06:53 by mcuello          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	*ft_memchr(const void *str, int c, size_t n)
 {
 	unsigned char	*s;
 	unsigned char	cc;
-	size_t				i;
+	size_t			i;
 
 	s = (unsigned char *)str;
 	cc = c;

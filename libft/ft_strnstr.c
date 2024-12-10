@@ -6,7 +6,7 @@
 /*   By: mcuello <mcuello@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/30 20:34:32 by mcuello           #+#    #+#             */
-/*   Updated: 2024/12/09 16:55:00 by mcuello          ###   ########.fr       */
+/*   Updated: 2024/12/10 18:09:47 by mcuello          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,13 +26,14 @@ char	*ft_strnstr(const char *big, const char *little, size_t len)
 		while (big[i + j] == little[j] && i + j < len)
 			j++;
 		if (!little[j])
-		//Analiza si llegó al final de la cadena, indicador
-		//de que recorrió todo el string.
 			return ((char *)(big + i));
 		i++;
 	}
 	return (0);
 }
+
+//Linea 26: Analiza si llegó al final de la cadena, indicador
+//de que recorrió todo el string.
 
 /* #include <stdio.h>
 #include <string.h>

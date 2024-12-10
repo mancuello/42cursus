@@ -6,7 +6,7 @@
 /*   By: mcuello <mcuello@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 13:43:22 by mcuello           #+#    #+#             */
-/*   Updated: 2024/12/09 14:00:23 by mcuello          ###   ########.fr       */
+/*   Updated: 2024/12/10 18:10:27 by mcuello          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ char	*ft_strdup(const char *s)
 	len = ft_strlen(s);
 	dest = ft_calloc(len + 1, sizeof(char));
 	if (!dest)
-		return(NULL);
+		return (NULL);
 	i = 0;
 	while (i < len)
 	{
