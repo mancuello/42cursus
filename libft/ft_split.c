@@ -6,7 +6,7 @@
 /*   By: mcuello <mcuello@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/10 12:08:24 by mcuello           #+#    #+#             */
-/*   Updated: 2024/12/10 18:05:49 by mcuello          ###   ########.fr       */
+/*   Updated: 2024/12/12 18:25:33 by mcuello          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ static size_t	amountof_words(char const *s, char c)
 char	**ft_split(char const *s, char c)
 {
 	char	**array;
-	size_t	 i;
+	size_t	i;
 	size_t	start;
 
 	if (!s)
@@ -75,7 +75,6 @@ char	**ft_split(char const *s, char c)
 	array[i] = NULL;
 	return (array);
 }
-
 
 /* #include <stdio.h>
 #include <stdlib.h>

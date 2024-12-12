@@ -6,7 +6,7 @@
 /*   By: mcuello <mcuello@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/07 21:17:09 by mcuello           #+#    #+#             */
-/*   Updated: 2024/12/09 14:11:18 by mcuello          ###   ########.fr       */
+/*   Updated: 2024/12/12 18:48:33 by mcuello          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	*ft_calloc(size_t elem, size_t size)
 
 	reserv = malloc(elem * size);
 	if (!reserv)
-		return (0);
+		return (NULL);
 	ft_bzero(reserv, elem * size);
 	return (reserv);
 }
