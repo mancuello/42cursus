@@ -12,7 +12,7 @@
 
 #include "libft.h"
 
-int	digits(int n)
+static	int	digits(int n)
 {
 	int	count;
 
@@ -27,14 +27,14 @@ int	digits(int n)
 	return (count);
 }
 
-int	characters(int n)
+static	int	characters(int n)
 {
 	if (n < 0)
 		return (digits(n * -1) + 1);
 	return (digits(n));
 }
 
-int	ft_module(int n)
+static	int	ft_module(int n)
 {
 	if (n < 0)
 		return (-n);

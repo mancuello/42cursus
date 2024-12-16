@@ -1,26 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strrchr.c                                       :+:      :+:    :+:   */
+/*   ft_striteri.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mcuello <mcuello@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/30 19:05:37 by mcuello           #+#    #+#             */
-/*   Updated: 2024/12/02 12:12:21 by mcuello          ###   ########.fr       */
+/*   Created: 2024/12/15 18:49:20 by mcuello           #+#    #+#             */
+/*   Updated: 2024/12/15 18:49:20 by mcuello          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strrchr(const char *s, int c)
+void	ft_striteri(char *s, void (*f)(unsigned int, char *))
 {
-	int	last;
+	size_t	i;
 
-	last = ft_strlen(s) + 1;
-	while (last--)
+	i = 0;
+	while (*s != '\0')
 	{
-		if (s[last] == (char)c)
-			return ((char *)s + last);
+		f(i, s);
+		s++;
+		i++;
 	}
-	return (NULL);
 }
+
+/* void	my_toupper(unsigned int i, char *c)
+{
+	if (*c >= 97 && *c <= 122)
+		*c = *c - 32;
+}
+
+int	main(void)
+{
+	char	source[] = "hello world";
+	
+	printf("El original: %s\n", source);
+	ft_striteri(source, my_toupper);
+	printf("El modificado: %s", source);
+	return (0);
+} */
