@@ -6,7 +6,7 @@
 /*   By: mcuello <mcuello@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/12 15:27:28 by mcuello           #+#    #+#             */
-/*   Updated: 2024/12/12 19:27:11 by mcuello          ###   ########.fr       */
+/*   Updated: 2024/12/16 14:09:52 by mcuello          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ char	*ft_itoa(int n)
 	unsigned int	i;
 
 	if (n == INT_MIN)
-		return (strdup("-2147483648"));
+		return (ft_strdup("-2147483648"));
 	i = characters(n);
 	module = ft_module(n);
 	dest = ft_calloc(i + 1, sizeof(char));

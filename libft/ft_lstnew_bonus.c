@@ -1,26 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putchar_fd.c                                    :+:      :+:    :+:   */
+/*   ft_lstnew_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mcuello <mcuello@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/15 21:15:07 by mcuello           #+#    #+#             */
-/*   Updated: 2024/12/16 14:42:07 by mcuello          ###   ########.fr       */
+/*   Created: 2024/12/16 12:57:52 by mcuello           #+#    #+#             */
+/*   Updated: 2024/12/16 14:12:21 by mcuello          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_putchar_fd(char c, int fd)
+t_list	*ft_lstnew(void *content)
 {
-	if (fd < 0)
-		return ;
-	write(fd, &c, 1);
-}
+	t_list	*node;
 
-/* int	main(void)
-{
-	ft_putchar_fd('A', 1); // Escribe 'A' en la salida estándar
-	return (0);
-} */
+	node = (t_list *)malloc(sizeof(t_list));
+	if (!node)
+		return (NULL);
+	(*node).content = content;
+	(*node).next = NULL;
+	return (node);
+}

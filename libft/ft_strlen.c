@@ -6,13 +6,13 @@
 /*   By: mcuello <mcuello@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/28 13:50:47 by mcuello           #+#    #+#             */
-/*   Updated: 2024/11/28 15:40:47 by mcuello          ###   ########.fr       */
+/*   Updated: 2024/12/16 14:05:28 by mcuello          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_strlen(char *c)
+int	ft_strlen(const char *c)
 {
 	int	i;
 
