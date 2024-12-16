@@ -6,7 +6,7 @@
 /*   By: mcuello <mcuello@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/04 16:16:59 by mcuello           #+#    #+#             */
-/*   Updated: 2024/12/16 16:05:11 by mcuello          ###   ########.fr       */
+/*   Updated: 2024/12/16 16:50:33 by mcuello          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@ void	*ft_memcpy(void *dest, const void *src, size_t n)
 {
 	size_t	i;
 
-	if (!dest || !src)
-		return (0);
+	if (!dest && !src)
+		return (NULL);
 	i = 0;
 	while (i < n)
 	{

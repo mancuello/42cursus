@@ -6,7 +6,7 @@
 /*   By: mcuello <mcuello@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/15 22:39:12 by mcuello           #+#    #+#             */
-/*   Updated: 2024/12/16 16:10:27 by mcuello          ###   ########.fr       */
+/*   Updated: 2024/12/16 16:13:34 by mcuello          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int			ft_isprint(int c);
 //Memory manipulation
 void		*ft_memmove(void *dest, const void *src, size_t n);
 void		*ft_memchr(const void *str, int c, size_t n);
-//void		*ft_memcpy(void *dest, const void *src, size_t n);
+void		*ft_memcpy(void *dest, const void *src, size_t n);
 void		*ft_memset(void *str, int c, size_t n);
 void		*ft_calloc(size_t elem, size_t size);
 int			ft_memcmp(const void *s1, const void *s2, size_t n);

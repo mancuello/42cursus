@@ -6,7 +6,7 @@
 #    By: mcuello <mcuello@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/12/16 13:15:57 by mcuello           #+#    #+#              #
-#    Updated: 2024/12/16 16:07:03 by mcuello          ###   ########.fr        #
+#    Updated: 2024/12/16 16:13:45 by mcuello          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,6 +14,7 @@ NAME		= libft.a
 
 SRCS		= ft_memset.c \
 			  ft_bzero.c \
+			  ft_memcpy.c \
 			  ft_memmove.c \
 			  ft_memchr.c \
 			  ft_memcmp.c \

@@ -6,7 +6,7 @@
 /*   By: mcuello <mcuello@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 23:57:38 by mcuello           #+#    #+#             */
-/*   Updated: 2024/12/10 18:12:48 by mcuello          ###   ########.fr       */
+/*   Updated: 2024/12/16 18:43:04 by mcuello          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,8 @@ char	*ft_strtrim(char const *s1, char const *set)
 	unsigned int	s1_len;
 	unsigned int	start;
 
+	if (!set || !s1)
+		return (NULL);
 	start = 0;
 	while (ft_include(set, s1[start]))
 		start++;
@@ -52,6 +54,5 @@ char	*ft_strtrim(char const *s1, char const *set)
     {
         printf("Error en ft_strtrim.\n");
     }
-
     return 0;
 } */

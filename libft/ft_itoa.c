@@ -6,7 +6,7 @@
 /*   By: mcuello <mcuello@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/12 15:27:28 by mcuello           #+#    #+#             */
-/*   Updated: 2024/12/16 14:09:52 by mcuello          ###   ########.fr       */
+/*   Updated: 2024/12/16 16:28:15 by mcuello          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,8 @@ char	*ft_itoa(int n)
 	i = characters(n);
 	module = ft_module(n);
 	dest = ft_calloc(i + 1, sizeof(char));
+	if (!dest)
+		return (NULL);
 	dest[i] = '\0';
 	while (i > 0)
 	{

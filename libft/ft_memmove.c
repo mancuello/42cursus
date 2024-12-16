@@ -6,7 +6,7 @@
 /*   By: mcuello <mcuello@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/04 21:36:59 by mcuello           #+#    #+#             */
-/*   Updated: 2024/12/10 18:08:32 by mcuello          ###   ########.fr       */
+/*   Updated: 2024/12/16 17:20:17 by mcuello          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,7 @@ void	*ft_memmove(void *dest, const void *src, size_t n)
 	size_t	i;
 
 	i = n;
-	if (!dest || !src || !n)
-		return (0);
-	if (dest == src)
+	if (dest == src || !n)
 		return (dest);
 	else if (dest > src)
 	{
