@@ -6,7 +6,7 @@
 /*   By: mcuello <mcuello@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 23:57:38 by mcuello           #+#    #+#             */
-/*   Updated: 2024/12/16 18:43:04 by mcuello          ###   ########.fr       */
+/*   Updated: 2024/12/17 13:25:39 by mcuello          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,8 @@ static int	ft_include(char const *s1, char c)
 
 char	*ft_strtrim(char const *s1, char const *set)
 {
-	unsigned int	s1_len;
-	unsigned int	start;
+	size_t	s1_len;
+	size_t	start;
 
 	if (!set || !s1)
 		return (NULL);
