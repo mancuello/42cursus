@@ -6,7 +6,7 @@
 #    By: mcuello <mcuello@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/12/16 13:15:57 by mcuello           #+#    #+#              #
-#    Updated: 2024/12/16 16:13:45 by mcuello          ###   ########.fr        #
+#    Updated: 2024/12/18 16:54:18 by mcuello          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -57,11 +57,11 @@ CFLAGS		= -Wall -Werror -Wextra
 all: $(NAME)
 
 $(NAME):
-	cc $(FLAGS) -c $(SRCS) -I ./
+	cc $(CFLAGS) -c $(SRCS) -I ./
 	ar rc $(NAME) $(OBJS)
 
 bonus: $(NAME)
-	cc $(FLAGS) -c $(BNS_SRCS) -I ./
+	cc $(CFLAGS) -c $(BNS_SRCS) -I ./
 	ar rc $(NAME) $(BNS_OBJS)
 
 clean:

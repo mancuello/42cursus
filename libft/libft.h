@@ -6,7 +6,7 @@
 /*   By: mcuello <mcuello@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/15 22:39:12 by mcuello           #+#    #+#             */
-/*   Updated: 2024/12/16 16:13:34 by mcuello          ###   ########.fr       */
+/*   Updated: 2024/12/18 16:53:03 by mcuello          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ int			ft_memcmp(const void *s1, const void *s2, size_t n);
 void		ft_bzero(void *src, size_t n);
 
 //String manipulation
-int			ft_strlen(const char *c);
+size_t		ft_strlen(const char *c);
 int			ft_strncmp(char *str1, char *str2, size_t n);
 void		ft_striteri(char *s, void (*f)(unsigned int, char *));
 size_t		ft_strlcat(char *dest, const char *src, size_t size);
