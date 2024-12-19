@@ -6,7 +6,7 @@
 /*   By: mcuello <mcuello@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/15 22:39:12 by mcuello           #+#    #+#             */
-/*   Updated: 2024/12/18 16:53:03 by mcuello          ###   ########.fr       */
+/*   Updated: 2024/12/19 18:42:00 by mcuello          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,9 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include <limits.h>
-//# include	<string.h>
-//# include	<stdio.h>
+# include <string.h>
+# include <stdio.h>
+# include <ctype.h>
 
 //Characters comprobation
 int			ft_isalpha(int c);
@@ -38,7 +39,7 @@ void		ft_bzero(void *src, size_t n);
 
 //String manipulation
 size_t		ft_strlen(const char *c);
-int			ft_strncmp(char *str1, char *str2, size_t n);
+int			ft_strncmp(const char *str1, const char *str2, size_t n);
 void		ft_striteri(char *s, void (*f)(unsigned int, char *));
 size_t		ft_strlcat(char *dest, const char *src, size_t size);
 size_t		ft_strlcpy(char *dest, const char *src, size_t size);

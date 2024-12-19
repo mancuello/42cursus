@@ -6,7 +6,7 @@
 /*   By: mcuello <mcuello@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/30 20:34:32 by mcuello           #+#    #+#             */
-/*   Updated: 2024/12/10 18:09:47 by mcuello          ###   ########.fr       */
+/*   Updated: 2024/12/19 19:31:31 by mcuello          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ char	*ft_strnstr(const char *big, const char *little, size_t len)
 	size_t	i;
 	size_t	j;
 
-	if (!*little)
+	if (!little)
 		return ((char *)big);
 	i = 0;
 	j = 0;
