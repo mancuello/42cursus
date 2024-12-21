@@ -14,17 +14,19 @@
 
 char	*ft_strchr(const char *s, int c)
 {
-	if (c == 0)
-	{
-		while (*s)
-			s++;
-		return ((char *)s);
-	}
 	while (*s)
 	{
 		if (*s == (char)c)
 			return ((char *)s);
 		s++;
 	}
-	return ((char *)0);
+	if (c == 0)
+		return ((char *)s);
+	return (NULL);
 }
+
+/* int main(void)
+{
+    printf("El caracter buscado esta aqui: %s", ft_strchr("hola mundo", '\0'));
+    return (0);
+} */
