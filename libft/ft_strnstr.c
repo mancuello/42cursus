@@ -20,12 +20,12 @@ char	*ft_strnstr(const char *big, const char *little, size_t len)
 	if (!*little)
 		return ((char *)big);
 	i = 0;
+	j = 0;
 	while (big[i] && i < len)
 	{
-	    j = 0;
-		while ((little[i] != '\0') && (big[i + j] == little[j]) && (i + j) < len)
+		while ((little[j] != '\0') && (big[i + j] == little[j]) && (i + j) < len)
 			j++;
-		if (!little[j])
+		if (little[j] == '\0')
 			return ((char *)(big + i));
 		i++;
 	}
