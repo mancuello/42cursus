@@ -6,7 +6,7 @@
 /*   By: mcuello <mcuello@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/30 18:24:41 by mcuello           #+#    #+#             */
-/*   Updated: 2024/12/02 12:14:32 by mcuello          ###   ########.fr       */
+/*   Updated: 2024/12/23 12:42:27 by mcuello          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ char	*ft_strchr(const char *s, int c)
     return (0);
 } */
 
-char	*santiago(const char *str, int c)
+/* char	*santiago(const char *str, int c)
 {
 	size_t	i;
 
@@ -79,4 +79,4 @@ int main(void)
     printf("El resultado santiago es: %s\n", santiago("teste", '\0'));
     printf("El resultado matute es: %s\n", matute("teste", '\0'));
     return (0);
-}
+} */
