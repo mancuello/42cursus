@@ -70,19 +70,3 @@ int	main(void)
 	printf("resultado original");
 	return (0);
 }
-
-Makefile:27: warning: ignoring prerequisites on suffix rule definition
-gcc -Wall -Werror -Wextra -c -o aux2.o aux2.c
-aux2.c: In function ‘p_conv’:
-aux2.c:75:13: error: assignment to ‘long unsigned int’ from ‘void *’ makes integer from pointer without a cast [-Werror=int-conversion]
-   75 |  ul_pointer = pointer;
-      |             ^
-aux2.c:68:9: error: unused variable ‘i’ [-Werror=unused-variable]
-   68 |  int    i;
-      |         ^
-aux2.c: In function ‘inner_to_hexa’:
-aux2.c:25:11: error: ‘array’ is used uninitialized in this function [-Werror=uninitialized]
-   25 |  array[0] = resto + '0';
-      |  ~~~~~~~~~^~~~~~~~~~~~~
-cc1: all warnings being treated as errors
-make: *** [Makefile:27: aux2.o] Error 1

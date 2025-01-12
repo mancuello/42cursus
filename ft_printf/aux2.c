@@ -22,6 +22,9 @@ char	*inner_to_hexa(unsigned long num)
 
 	cociente = num / 16;
 	resto = num % 16;
+	array = malloc(sizeof(char) * 17);
+		if (!array)
+    		return (NULL);
 	array[0] = resto + '0';
 	i = 0;
 	while (cociente != 0)
@@ -46,18 +49,26 @@ char	*to_hexa(unsigned long ul_pointer, int mayus)
 	hex_chars = "0123456789abcdef";
 	if (mayus)
 		hex_chars = "0123456789ABCDEF";
-	hex_number = "";
-	j = 0;
 	arr = inner_to_hexa(ul_pointer);
+	if (!arr)
+		return (NULL);
+	hex_number = malloc(ft_strlen(arr) + 1);
+	if (!hex_number)
+	{
+		free(arr);
+		return (NULL);
+	}
+	j = 0;
 	i = ft_strlen(arr) - 1;
 	valor = 0;
 	while (i >= 0)
 	{
 		valor = arr[i] - '0';
-		hex_number[j] = hex_chars[valor];
+		hex_number[j++] = hex_chars[valor];
 		i--;
 	}
 	hex_number[j + 1] = '\0';
+	free(arr);
 	return (hex_number);
 }
 
@@ -65,14 +76,13 @@ int	p_conv(void *pointer)
 {
 	unsigned long	ul_pointer;
 	char			*hex_number;
-	int				i;
 
 	if (!pointer)
 	{
 		write(1, "(nil)", 5);
 		return (5);
 	}
-	ul_pointer = pointer;
+	ul_pointer = (unsigned long)pointer;
 	hex_number = to_hexa(ul_pointer, 0);
 	write(1, "0x", 2);
 	return (ft_putstr2(hex_number) + 2);
