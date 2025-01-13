@@ -6,13 +6,13 @@
 /*   By: mcuello <mcuello@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 13:45:39 by mcuello           #+#    #+#             */
-/*   Updated: 2025/01/10 18:20:30 by mcuello          ###   ########.fr       */
+/*   Updated: 2025/01/12 23:13:44 by mcuello          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	min_int(int n)
+int	min_int(void)
 {
 	ft_putchar('-');
 	ft_putchar('2');
@@ -26,7 +26,7 @@ int	ft_putnbr(int n)
 
 	result = 0;
 	if (n == -2147483648)
-		return (min_int(n));
+		return (min_int());
 	else if (n < 0)
 	{
 		ft_putchar('-');
@@ -44,6 +44,7 @@ int	ft_putnbr(int n)
 		ft_putchar(n % 10 + '0');
 		result += 1;
 	}
+	return (result);
 }
 
 int	diu_conv(int n)

@@ -6,7 +6,7 @@
 /*   By: mcuello <mcuello@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 12:54:59 by mcuello           #+#    #+#             */
-/*   Updated: 2025/01/10 18:30:46 by mcuello          ###   ########.fr       */
+/*   Updated: 2025/01/12 22:55:44 by mcuello          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ char	*to_hexa(unsigned long ul_pointer, int mayus)
 {
 	const char		*hex_chars;
 	char			*hex_number;
-	const char		*arr;
+	char		*arr;
 	int				i;
 	int				j;
 	int				valor;
