@@ -6,7 +6,7 @@
 /*   By: mcuello <mcuello@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 12:54:59 by mcuello           #+#    #+#             */
-/*   Updated: 2025/01/13 19:10:26 by mcuello          ###   ########.fr       */
+/*   Updated: 2025/01/14 19:15:15 by mcuello          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ char	*reverse(char *arr)
 	return (arr);
 }
 
-char	*to_hexa(unsigned long long num, int mayus)
+char	*to_hexa(unsigned long num, int mayus)
 {
 	char		*hex_chars;
 	char		*array;
@@ -58,15 +58,15 @@ char	*to_hexa(unsigned long long num, int mayus)
 
 int	p_conv(void *pointer)
 {
-	unsigned long long	ul_pointer;
-	char				*hex_number;
+	unsigned long	ul_pointer;
+	char			*hex_number;
 
 	if (!pointer)
 	{
 		write(1, "(nil)", 5);
 		return (5);
 	}
-	ul_pointer = (unsigned long long)pointer;
+	ul_pointer = (unsigned long)pointer;
 	hex_number = to_hexa(ul_pointer, 0);
 	write(1, "0x", 2);
 	return (ft_putstr2(hex_number) + 2);
@@ -80,8 +80,8 @@ int	x_conv(int hex, char c)
 	char	*hex_number;
 
 	if (c == 'X')
-		hex_number = to_hexa((unsigned long long)hex, 1);
+		hex_number = to_hexa((unsigned int)hex, 1);
 	else
-		hex_number = to_hexa((unsigned long long)hex, 0);
+		hex_number = to_hexa((unsigned int)hex, 0);
 	return (ft_putstr2(hex_number));
 }

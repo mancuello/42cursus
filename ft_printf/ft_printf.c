@@ -6,7 +6,7 @@
 /*   By: mcuello <mcuello@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/23 16:54:24 by mcuello           #+#    #+#             */
-/*   Updated: 2025/01/13 19:49:13 by mcuello          ###   ########.fr       */
+/*   Updated: 2025/01/14 19:16:43 by mcuello          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,6 @@ int	ft_printf(char const *s, ...)
 		{
 			i++;
 			result += conversions(s[i], ap);
-			printf("RESULT: %i\n", result);
 		}
 		else
 		{
@@ -56,8 +55,10 @@ int	conversions(char c, va_list ap)
 		return (s_conv(va_arg(ap, char *)));
 	if (c == 'p')
 		return (p_conv(va_arg(ap, void *)));
-	if (c == 'd' || c == 'i' || c == 'u')
-		return (diu_conv(va_arg(ap, int)));
+	if (c == 'd' || c == 'i')
+		return (di_conv(va_arg(ap, int)));
+	if (c == 'u')
+		return (u_conv(va_arg(ap, int)));
 	if (c == 'x' || c == 'X')
 		return (x_conv(va_arg(ap, int), c));
 	if (c == '%')
@@ -67,12 +68,11 @@ int	conversions(char c, va_list ap)
 
 int	main(void)
 {
-/*     char    caracter = 'a';
+    char    caracter = 'a';
     char    *string = "hola mundo";
     int     number = 200;
- */
-
-    /* //Prueba solo de caracteres.
+	
+    //Prueba solo de caracteres.
 	ft_printf("Custom print\n");
 	printf("Original Print\n");
 
@@ -83,9 +83,10 @@ int	main(void)
     //Prueba con especificador %s
     ft_printf("Custom  => char: %s\n", string);
     printf("Original=> char: %s\n", string);
-	printf("la direccion es %lu\n", (unsigned long)string);
     //Prueba con especificador %p
-    ft_printf("Custom  => char: %p\n", string);
+    ft_printf("Custom  => char: %p\n", NULL);
+    printf("Original=> char: %p\n", NULL);
+	ft_printf("Custom  => char: %p\n", string);
     printf("Original=> char: %p\n", string);
 
     //Prueba con especificador %d
@@ -115,9 +116,9 @@ int	main(void)
 	//Prueba con varios especificadores
 	ft_printf("Custom  => char: %c, int: %i, dec: %d, unsigned: %u, hexa: %x, hexaM: %X, pointer: %p\n", 'a', 123, 123, 123, 123, 123, &caracter);
 	printf("Original=> char: %c, int: %i, dec: %d, unsigned: %u, hexa: %x, hexaM: %X, pointer: %p\n", 'a', 123, 123, 123, 123, 123, &caracter);
- */
+
 	//Prueba de retorno
-	printf("Se imprimieron: %i caracteres con la funcion ft_printf.\n", ft_printf("Se imprimiran %i caracteres-\n", 300));
-	ft_printf("Se imprimieron: %i caracteres con la funcion printf.\n", printf("Se imprimiran %i caracteres-\n", 300));
+	printf("Se imprimieron: %i caracteres con la funcion ft_printf.\n", ft_printf("Se imprimira el numero: %i y \"%s\" string\n", 300, string));
+	ft_printf("Se imprimieron: %i caracteres con la funcion printf.\n", printf("Se imprimira el numero: %i y \"%s\" string\n", 300, string));
 	return (0);
 }
