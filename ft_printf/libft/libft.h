@@ -6,7 +6,7 @@
 /*   By: mcuello <mcuello@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/12 23:40:43 by mcuello           #+#    #+#             */
-/*   Updated: 2025/01/12 23:52:31 by mcuello          ###   ########.fr       */
+/*   Updated: 2025/01/13 19:13:14 by mcuello          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,6 @@
 
 # include <stddef.h>
 
-size_t      ft_strlen(const char *str);
+size_t	ft_strlen(const char *str);
 
 #endif

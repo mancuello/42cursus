@@ -6,83 +6,67 @@
 /*   By: mcuello <mcuello@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 12:54:59 by mcuello           #+#    #+#             */
-/*   Updated: 2025/01/12 22:55:44 by mcuello          ###   ########.fr       */
+/*   Updated: 2025/01/13 19:10:26 by mcuello          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 #include "libft/libft.h"
 
-char	*inner_to_hexa(unsigned long num)
+char	*reverse(char *arr)
 {
-	unsigned long	cociente;
-	unsigned long	resto;
-	char			*array;
-	int				i;
+	char	temp;
+	int		start;
+	int		end;
 
-	cociente = num / 16;
-	resto = num % 16;
-	array = malloc(sizeof(char) * 17);
-		if (!array)
-    		return (NULL);
-	array[0] = resto + '0';
-	i = 0;
-	while (cociente != 0)
+	start = 0;
+	end = ft_strlen(arr) - 1;
+	while (start < end)
 	{
-		cociente = cociente / 16;
-		resto = cociente % 16;
-		array[++i] = resto + '0';
+		temp = arr[start];
+		arr[start] = arr[end];
+		arr[end] = temp;
+		start++;
+		end--;
 	}
-	array[i] = '\0';
-	return (array);
+	return (arr);
 }
 
-char	*to_hexa(unsigned long ul_pointer, int mayus)
+char	*to_hexa(unsigned long long num, int mayus)
 {
-	const char		*hex_chars;
-	char			*hex_number;
-	char		*arr;
-	int				i;
-	int				j;
-	int				valor;
+	char		*hex_chars;
+	char		*array;
+	int			i;
 
 	hex_chars = "0123456789abcdef";
 	if (mayus)
 		hex_chars = "0123456789ABCDEF";
-	arr = inner_to_hexa(ul_pointer);
-	if (!arr)
+	array = malloc(sizeof(char) * 17);
+	if (!array)
 		return (NULL);
-	hex_number = malloc(ft_strlen(arr) + 1);
-	if (!hex_number)
+	i = 0;
+	while (num > 0)
 	{
-		free(arr);
-		return (NULL);
+		array[i++] = hex_chars[num % 16];
+		num = num / 16;
 	}
-	j = 0;
-	i = ft_strlen(arr) - 1;
-	valor = 0;
-	while (i >= 0)
-	{
-		valor = arr[i] - '0';
-		hex_number[j++] = hex_chars[valor];
-		i--;
-	}
-	hex_number[j + 1] = '\0';
-	free(arr);
-	return (hex_number);
+	if (i == 0)
+		array[i++] = '0';
+	array[i] = '\0';
+	return (reverse(array));
 }
 
 int	p_conv(void *pointer)
 {
-	unsigned long	ul_pointer;
-	char			*hex_number;
+	unsigned long long	ul_pointer;
+	char				*hex_number;
 
 	if (!pointer)
 	{
 		write(1, "(nil)", 5);
 		return (5);
 	}
-	ul_pointer = (unsigned long)pointer;
+	ul_pointer = (unsigned long long)pointer;
 	hex_number = to_hexa(ul_pointer, 0);
 	write(1, "0x", 2);
 	return (ft_putstr2(hex_number) + 2);
@@ -96,15 +80,8 @@ int	x_conv(int hex, char c)
 	char	*hex_number;
 
 	if (c == 'X')
-		hex_number = to_hexa((unsigned long)hex, 1);
-	hex_number = to_hexa((unsigned long)hex, 0);
+		hex_number = to_hexa((unsigned long long)hex, 1);
+	else
+		hex_number = to_hexa((unsigned long long)hex, 0);
 	return (ft_putstr2(hex_number));
 }
-
-/* int	X_conv(int hex)
-{
-	char	*hex_number;
-
-	hex_number = to_hexa((unsigned long)hex, 1);
-	return (ft_putstr2(hex_number));
-} */

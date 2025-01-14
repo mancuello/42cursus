@@ -6,7 +6,7 @@
 /*   By: mcuello <mcuello@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 13:45:39 by mcuello           #+#    #+#             */
-/*   Updated: 2025/01/12 23:13:44 by mcuello          ###   ########.fr       */
+/*   Updated: 2025/01/13 19:52:58 by mcuello          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int	ft_putnbr(int n)
 	else if (n < 10)
 	{
 		ft_putchar(n + '0');
-		return (result + 1);
+		result += 1;
 	}
 	else
 	{
@@ -49,5 +49,6 @@ int	ft_putnbr(int n)
 
 int	diu_conv(int n)
 {
+	printf("\nRetorno dentro: %i\n", ft_putnbr(n));
 	return (ft_putnbr(n));
 }

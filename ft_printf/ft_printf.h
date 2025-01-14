@@ -6,7 +6,7 @@
 /*   By: mcuello <mcuello@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 17:50:48 by mcuello           #+#    #+#             */
-/*   Updated: 2025/01/12 23:53:19 by mcuello          ###   ########.fr       */
+/*   Updated: 2025/01/13 19:12:56 by mcuello          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int			x_conv(int hex, char c);
 int			min_int(void);
 int			ft_putnbr(int n);
 int			ft_putstr2(char *s);
-char		*inner_to_hexa(unsigned long num);
-char		*to_hexa(unsigned long ul_pointer, int mayus);
+char		*to_hexa(unsigned long long ul_pointer, int mayus);
+char		*reverse(char *arr);
 
 #endif
