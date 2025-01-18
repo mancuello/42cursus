@@ -6,7 +6,7 @@
 /*   By: mcuello <mcuello@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/23 16:54:24 by mcuello           #+#    #+#             */
-/*   Updated: 2025/01/14 19:16:43 by mcuello          ###   ########.fr       */
+/*   Updated: 2025/01/18 13:05:55 by mcuello          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ int	conversions(char c, va_list ap)
 	return (0);
 }
 
-int	main(void)
+/* int	main(void)
 {
     char    caracter = 'a';
     char    *string = "hola mundo";
@@ -120,5 +120,9 @@ int	main(void)
 	//Prueba de retorno
 	printf("Se imprimieron: %i caracteres con la funcion ft_printf.\n", ft_printf("Se imprimira el numero: %i y \"%s\" string\n", 300, string));
 	ft_printf("Se imprimieron: %i caracteres con la funcion printf.\n", printf("Se imprimira el numero: %i y \"%s\" string\n", 300, string));
+
+	//Prueba error
+	printf("Probando especificador \"j\": %j", 38);
+	ft_printf("Probando especificador \"j\": %j", 38);
 	return (0);
-}
+} */

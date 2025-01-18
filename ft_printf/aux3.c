@@ -6,7 +6,7 @@
 /*   By: mcuello <mcuello@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 13:45:39 by mcuello           #+#    #+#             */
-/*   Updated: 2025/01/14 16:27:57 by mcuello          ###   ########.fr       */
+/*   Updated: 2025/01/18 13:07:28 by mcuello          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@ int	ft_putnbr(unsigned int n)
 	int	result;
 
 	result = 0;
-	
 	if (n < 10)
 	{
 		ft_putchar(n + '0');
@@ -67,4 +66,3 @@ int	u_conv(int n)
 	n2 = (unsigned int)n;
 	return (ft_putnbr(n2));
 }
-
