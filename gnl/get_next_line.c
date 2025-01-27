@@ -6,17 +6,12 @@
 /*   By: mcuello <mcuello@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/18 14:03:08 by mcuello           #+#    #+#             */
-/*   Updated: 2025/01/26 19:24:43 by mcuello          ###   ########.fr       */
+/*   Updated: 2025/01/27 18:15:21 by mcuello          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include <stdlib.h>
-#include <fcntl.h>
-#include <stddef.h>
-#include <unistd.h>
 
-#define BUFFER_SIZE 42
+#include "get_next_line.h"
 
 size_t	ft_strlen(const char *c)
 {
@@ -85,7 +80,7 @@ char	*ft_concat(char *first, char *second, int start_second)
 		free(first);
 		first = NULL;
 	}
-	while(second[j] != '\0')
+	while(second[j] != '\0' && second[j] != '\n')
 	{
 		temp2[i++] = second[j++];
 	}
@@ -110,16 +105,12 @@ char	*get_next_line(int fd)
 	char		*completed_line = NULL;
 	int			bytes_read;
 	int			pos;
+	static int	final = 0;
 
-	if (fd < 0 || BUFFER_SIZE <= 0)
+	if (final)
+		return(NULL);
+	if (fd < 0 || BUFFER_SIZE <= 1)
 		return (NULL);
-	if (!temp)
-	{
-		temp = ft_calloc((BUFFER_SIZE), sizeof(char));
-		if (!temp)
-			return (NULL);
-		temp[BUFFER_SIZE - 1] = '\0';
-	}
 	while (1)
 	{
 		if (buffer[0] == '\0')
@@ -133,11 +124,23 @@ char	*get_next_line(int fd)
 			}
 			if (bytes_read == 0)
 			{
-				break;
+				if (temp && temp[0] != '\0')
+				{
+					final = 1;
+					return (temp);
+				}
+				return (NULL);					
 			}
 			//buffer[bytes_read] = '\0';
 		}
 		pos = get_newline_char(buffer);
+		if (!temp)
+		{
+			temp = ft_calloc((BUFFER_SIZE), sizeof(char));
+			if (!temp)
+				return (NULL);
+			temp[BUFFER_SIZE - 1] = '\0';
+		}
 		if (pos == -1)
 		{
 			temp = ft_concat(temp, buffer, 0);
@@ -151,15 +154,6 @@ char	*get_next_line(int fd)
 			return (completed_line);
 		}
 	}
-	if (temp && temp[0] != '\0')
-	{
-		completed_line = temp;
-		temp = NULL;
-		return (completed_line);
-	}
-	free(temp);
-	temp = NULL;
-	return (NULL);
 }
 
 int main(int argc, char **argv)

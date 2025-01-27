@@ -1,29 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_net_line.h                                     :+:      :+:    :+:   */
+/*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mcuello <mcuello@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 21:58:52 by mcuello           #+#    #+#             */
-/*   Updated: 2025/01/23 21:58:52 by mcuello          ###   ########.fr       */
+/*   Updated: 2025/01/27 18:17:14 by mcuello          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GNL
-# define LIBFT_H
+#ifndef GET_NEXT_LINE_H
+# define GET_NEXT_LINE_H
 
-# include <stddef.h>
-# include <stdlib.h>
-# include <unistd.h>
-# include <limits.h>
-# include <string.h>
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 42
+
+# endif
+
 # include <stdio.h>
-# include <ctype.h>
+# include <stdlib.h>
+# include <fcntl.h>
+# include <stddef.h>
+# include <unistd.h>
 
-//Characters comprobation
-int			ft_isalpha(int c);
-int			ft_isdigit(int c);
-int			ft_isalnum(int c);
+size_t	ft_strlen(const char *c);
+int		get_newline_char(char *buffer);
+void	*ft_calloc(size_t items, size_t size);
+char	*ft_concat(char *first, char *second, int start_second);
+void	ft_bzero(char *buffer, size_t size);
+char	*get_next_line(int fd);
+
 
 #endif
