@@ -1,0 +1,2 @@
+Linea 1 con salto de linea a continuacion.\n
+Linea 2 sin salto de linea. Linea 3 al final con salto.

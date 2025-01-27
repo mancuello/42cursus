@@ -6,7 +6,7 @@
 #    By: mcuello <mcuello@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/10 14:03:17 by mcuello           #+#    #+#              #
-#    Updated: 2025/01/14 14:02:51 by mcuello          ###   ########.fr        #
+#    Updated: 2025/01/18 13:57:03 by mcuello          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,7 +23,7 @@ OBJS		= $(SRC:%.c=%.o)
 
 LIBFT_OBJ	= $(LIBFT_SRC:%.c=%.o)
 
-CC			= gcc
+CC			= cc
 
 CFLAGS		= -Wall -Werror -Wextra
 
