@@ -6,7 +6,7 @@
 /*   By: mcuello <mcuello@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/18 14:03:08 by mcuello           #+#    #+#             */
-/*   Updated: 2025/01/27 18:15:21 by mcuello          ###   ########.fr       */
+/*   Updated: 2025/01/28 17:53:16 by mcuello          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,27 @@ size_t	ft_strlen(const char *c)
 	return (i);
 }
 
+void	*ft_calloc(size_t items, size_t size)
+{
+	void	*reserv;
+
+	reserv = malloc(items * size);
+	if (!reserv)
+		return (NULL);
+	ft_bzero(reserv, items * size);
+	return (reserv);
+}
+
+void	ft_bzero(char *buffer, size_t size)
+{
+	size_t	i;
+
+	i = 0;
+	while (i < size)
+		buffer[i++] = '\0';
+}
+
+
 int		get_newline_char(char *buffer)
 {
 	size_t	i;
@@ -39,62 +60,55 @@ int		get_newline_char(char *buffer)
 	return (-1);
 }
 
-void	*ft_calloc(size_t items, size_t size)
+void	ft_copy(char *src, char *dest)
 {
-	void	*reserv;
-	size_t	i;
-
-	reserv = malloc(items * size);
-	if (!reserv)
-		return (NULL);
-	i = 0;
-	while (i < (items * size))
+	while (*src != '\0' && *src != '\n')
 	{
-		*((unsigned char *)(reserv + i)) = (unsigned char)0;
-		i++;
+		*dest = *src;
+		dest++;
+		src++;
 	}
-	return(reserv);
 }
 
-
-char	*ft_concat(char *first, char *second, int start_second)
+char	*ft_concat(char *first, char *second)
 {
 	char	*temp2;
-	int		i;
-	int		j;
+	//int		j;
 	
-	i = 0;
-	j = start_second;
+	//j = start_second;
 	if (!second)
 		return (first);	
 	temp2 = ft_calloc((ft_strlen(first) + ft_strlen(second)), sizeof(char));
 	if (!temp2)
 		return (NULL);
-	if (ft_strlen(first) != 0)
+	if (first)
 	{
-		while (first[i] != '\0')
-		{
-			temp2[i] = first[i];
-			i++;
-		}
+		ft_copy(first, temp2);
 		free(first);
 		first = NULL;
 	}
-	while(second[j] != '\0' && second[j] != '\n')
-	{
-		temp2[i++] = second[j++];
-	}
-	temp2[i] = '\0';
+	ft_copy(second, temp2);
 	return (temp2);
 }
 
-void	ft_bzero(char *buffer, size_t size)
+int	get_buffer(int fd, char *temp, char *buffer)
 {
-	size_t	i;
+	int	bytes_read;
 
-	i = 0;
-	while (i < size)
-		buffer[i++] = '\0';
+	bytes_read = read(fd, buffer, BUFFER_SIZE - 1);
+	if (bytes_read == -1)
+	{
+		free(temp);
+		temp = NULL;
+		return (0);
+	}
+	if (bytes_read == 0)
+	{
+		if (temp && temp[0] != '\0')
+			return (1);
+		return (0);
+	}
+	return (0);
 }
 
 
@@ -103,53 +117,34 @@ char	*get_next_line(int fd)
 	static char	buffer[BUFFER_SIZE];
 	static char	*temp = NULL;
 	char		*completed_line = NULL;
-	int			bytes_read;
-	int			pos;
 	static int	final = 0;
 
 	if (final)
-		return(NULL);
+		return (NULL);
 	if (fd < 0 || BUFFER_SIZE <= 1)
 		return (NULL);
+	if (!temp)
+	{
+		temp = ft_calloc((BUFFER_SIZE), sizeof(char));
+		if (!temp)
+			return (NULL);
+	}
 	while (1)
 	{
-		if (buffer[0] == '\0')
+		if (get_buffer(fd, temp, buffer) == 1)
 		{
-			bytes_read = read(fd, buffer, BUFFER_SIZE - 1);
-			if (bytes_read == -1)
-			{
-				free(temp);
-				temp = NULL;
-				return (NULL);
-			}
-			if (bytes_read == 0)
-			{
-				if (temp && temp[0] != '\0')
-				{
-					final = 1;
-					return (temp);
-				}
-				return (NULL);					
-			}
-			//buffer[bytes_read] = '\0';
+			final = 1;
+			return (temp);
 		}
-		pos = get_newline_char(buffer);
-		if (!temp)
+		if (get_newline_char(buffer) == -1)
 		{
-			temp = ft_calloc((BUFFER_SIZE), sizeof(char));
-			if (!temp)
-				return (NULL);
-			temp[BUFFER_SIZE - 1] = '\0';
-		}
-		if (pos == -1)
-		{
-			temp = ft_concat(temp, buffer, 0);
+			temp = ft_concat(temp, buffer);
 			ft_bzero(buffer, BUFFER_SIZE);
 		}
 		else
 		{
-			completed_line = ft_concat(temp, buffer, 0);
-			temp = ft_concat(NULL, buffer, pos + 1);
+			completed_line = ft_concat(temp, buffer);
+			temp = ft_concat(NULL, buffer);
 			ft_bzero(buffer, BUFFER_SIZE);
 			return (completed_line);
 		}
@@ -182,6 +177,8 @@ int main(int argc, char **argv)
         printf("Sale acá: %s\n", line); // Muestra la línea leída
         free(line); // Libera la memoria de la línea
     }
+	if ((line = get_next_line(fd)) == NULL)
+		free(line);
 
     // Cierra el archivo
     close(fd);
