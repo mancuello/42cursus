@@ -6,7 +6,7 @@
 /*   By: mcuello <mcuello@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/18 14:03:08 by mcuello           #+#    #+#             */
-/*   Updated: 2025/01/28 17:53:16 by mcuello          ###   ########.fr       */
+/*   Updated: 2025/01/31 16:40:27 by mcuello          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 size_t	ft_strlen(const char *c)
 {
-	int	i;
+	size_t	i;
 
 	i = 0;
 	if (!c)
@@ -28,30 +28,23 @@ size_t	ft_strlen(const char *c)
 void	*ft_calloc(size_t items, size_t size)
 {
 	void	*reserv;
+	size_t	i;
 
 	reserv = malloc(items * size);
 	if (!reserv)
 		return (NULL);
-	ft_bzero(reserv, items * size);
-	return (reserv);
-}
-
-void	ft_bzero(char *buffer, size_t size)
-{
-	size_t	i;
-
 	i = 0;
 	while (i < size)
-		buffer[i++] = '\0';
+		((char *)reserv)[i++] = '\0';
+	return (reserv);
 }
-
 
 int		get_newline_char(char *buffer)
 {
 	size_t	i;
 
 	i = 0;
-	while (i < (ft_strlen(buffer) - 1))
+	while (buffer[i] != '\0')
 	{
 		if (buffer[i] == '\n')
 			return (i);
@@ -62,33 +55,42 @@ int		get_newline_char(char *buffer)
 
 void	ft_copy(char *src, char *dest)
 {
-	while (*src != '\0' && *src != '\n')
-	{
-		*dest = *src;
+	while (*dest != '\0')
 		dest++;
-		src++;
-	}
+	while (*src != '\0' && *src != '\n')
+		*dest++ = *src++;
+	*dest = '\0';
 }
 
-char	*ft_concat(char *first, char *second)
+char	*ft_concat(char *temp, char *buffer)
 {
 	char	*temp2;
-	//int		j;
 	
-	//j = start_second;
-	if (!second)
-		return (first);	
-	temp2 = ft_calloc((ft_strlen(first) + ft_strlen(second)), sizeof(char));
+	if (!buffer)
+		return (temp);	
+	temp2 = ft_calloc((ft_strlen(temp) + ft_strlen(buffer)) + 1, sizeof(char));
 	if (!temp2)
 		return (NULL);
-	if (first)
-	{
-		ft_copy(first, temp2);
-		free(first);
-		first = NULL;
-	}
-	ft_copy(second, temp2);
+	if (temp)
+		ft_copy(temp, temp2);
+	ft_copy(buffer, temp2);
 	return (temp2);
+}
+
+void	ft_memmove(char *buffer)
+{
+	size_t	i;
+	size_t	pos;
+
+	pos = get_newline_char(buffer);
+	i = 0;
+	while (buffer[i + pos + 1] != '\0')
+	{
+		buffer[i] = buffer[i + pos + 1];
+		i++;
+	}
+	while (buffer[i] != '\0')
+		buffer[i++] = '\0';
 }
 
 int	get_buffer(int fd, char *temp, char *buffer)
@@ -131,21 +133,28 @@ char	*get_next_line(int fd)
 	}
 	while (1)
 	{
-		if (get_buffer(fd, temp, buffer) == 1)
+		if (buffer[0] == '\0')
 		{
-			final = 1;
-			return (temp);
+			if (get_buffer(fd, temp, buffer) == 1)
+			{
+				final = 1;
+				return (temp);
+			}
+
 		}
 		if (get_newline_char(buffer) == -1)
 		{
-			temp = ft_concat(temp, buffer);
-			ft_bzero(buffer, BUFFER_SIZE);
+			completed_line = ft_concat(temp, buffer);
+			free(temp);
+			temp = completed_line;
+			buffer[0] = '\0';
 		}
 		else
 		{
 			completed_line = ft_concat(temp, buffer);
-			temp = ft_concat(NULL, buffer);
-			ft_bzero(buffer, BUFFER_SIZE);
+			free(temp);
+			temp = NULL;
+			ft_memmove(buffer);
 			return (completed_line);
 		}
 	}
