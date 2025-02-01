@@ -6,7 +6,7 @@
 /*   By: mcuello <mcuello@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/18 14:03:08 by mcuello           #+#    #+#             */
-/*   Updated: 2025/01/31 18:18:43 by mcuello          ###   ########.fr       */
+/*   Updated: 2025/02/01 14:26:58 by mcuello          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,7 +93,7 @@ char	*get_next_line(int fd)
 	}
 }
 
-int main(int argc, char **argv)
+/* int main(int argc, char **argv)
 {
     int fd;
     char *line;
@@ -126,4 +126,4 @@ int main(int argc, char **argv)
     close(fd);
 
     return (0);
-}
+} */
