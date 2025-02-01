@@ -6,7 +6,7 @@
 /*   By: mcuello <mcuello@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 17:50:48 by mcuello           #+#    #+#             */
-/*   Updated: 2025/01/14 19:15:54 by mcuello          ###   ########.fr       */
+/*   Updated: 2025/02/01 16:46:42 by mcuello          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include <stdio.h>
-# include "libft/libft.h"
 
 void		ft_putchar(char c);
 int			ft_printf(char const *s, ...);
@@ -33,5 +32,6 @@ int			ft_putnbr(unsigned int n);
 int			ft_putstr2(char *s);
 char		*to_hexa(unsigned long ul_pointer, int mayus);
 char		*reverse(char *arr);
+size_t		ft_strlen(const char *c);
 
 #endif

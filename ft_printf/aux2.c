@@ -6,12 +6,21 @@
 /*   By: mcuello <mcuello@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 12:54:59 by mcuello           #+#    #+#             */
-/*   Updated: 2025/01/14 19:15:15 by mcuello          ###   ########.fr       */
+/*   Updated: 2025/02/01 16:48:17 by mcuello          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-#include "libft/libft.h"
+
+size_t	ft_strlen(const char *c)
+{
+	int	i;
+
+	i = 0;
+	while (c[i] != '\0')
+		i++;
+	return (i);
+}
 
 char	*reverse(char *arr)
 {
