@@ -6,7 +6,7 @@
 /*   By: mcuello <mcuello@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/18 14:03:08 by mcuello           #+#    #+#             */
-/*   Updated: 2025/02/01 14:26:58 by mcuello          ###   ########.fr       */
+/*   Updated: 2025/02/05 17:33:46 by mcuello          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int	get_buffer(int fd, char *temp, char *buffer)
 {
 	int	bytes_read;
 
-	bytes_read = read(fd, buffer, BUFFER_SIZE - 1);
+	bytes_read = read(fd, buffer, BUFFER_SIZE);
 	if (bytes_read == -1)
 	{
 		free(temp);
@@ -70,15 +70,15 @@ char	*process_endline(char **temp, char *buffer)
 
 char	*get_next_line(int fd)
 {
-	static char	buffer[BUFFER_SIZE];
+	static char	buffer[BUFFER_SIZE + 1];
 	static char	*temp = NULL;
 	static int	final = 0;
 
-	if (final || fd < 0 || BUFFER_SIZE <= 1)
+	if (final || fd < 0 || BUFFER_SIZE < 1)
 		return (NULL);
 	if (!temp)
 	{
-		temp = ft_calloc((BUFFER_SIZE), sizeof(char));
+		temp = ft_calloc((BUFFER_SIZE + 1), sizeof(char));
 		if (!temp)
 			return (NULL);
 	}
@@ -93,7 +93,7 @@ char	*get_next_line(int fd)
 	}
 }
 
-/* int main(int argc, char **argv)
+int main(int argc, char **argv)
 {
     int fd;
     char *line;
@@ -126,4 +126,4 @@ char	*get_next_line(int fd)
     close(fd);
 
     return (0);
-} */
+}
