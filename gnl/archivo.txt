@@ -1,21 +1,7 @@
 Linea 1: con un poco de textoo
 Linea 2: 87509381690347691874897190483671390876918734098175498754.
-Linea 3: con punto final pero sin salto de linea.
-line
-ddf
-ddfss
-sdfd
-ssd
-sssd
-saltos
-saltos
-saltos
-finalr
-dergf
-g
-fd
-ddfc
-f..lkç
-g
-fdd
-d.
+Linea 3: hola mundo.
+Linea 4: procesos.
+Linea 5: salvese quien pueda/n
+Linea 6: cortado\n
+Linea 7: fin

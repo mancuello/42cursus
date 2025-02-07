@@ -6,13 +6,13 @@
 /*   By: mcuello <mcuello@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/18 14:03:08 by mcuello           #+#    #+#             */
-/*   Updated: 2025/02/05 17:33:46 by mcuello          ###   ########.fr       */
+/*   Updated: 2025/02/07 22:55:06 by mcuello          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-int	get_newline_char(char *buffer)
+/* int	get_newline_char(char *buffer)
 {
 	size_t	i;
 
@@ -24,29 +24,23 @@ int	get_newline_char(char *buffer)
 		i++;
 	}
 	return (-1);
-}
+} */
 
-int	get_buffer(int fd, char *temp, char *buffer)
+int	get_buffer(int fd, char *buffer, int *i)
 {
-	int	bytes_read;
+	static int	bytes_read = 0;
 
+	if (*i < bytes_read)
+		return (1);
+	*i = 0;
 	bytes_read = read(fd, buffer, BUFFER_SIZE);
-	if (bytes_read == -1)
-	{
-		free(temp);
-		temp = NULL;
+	if (bytes_read <= 0)
 		return (0);
-	}
-	if (bytes_read == 0)
-	{
-		if (temp && temp[0] != '\0')
-			return (1);
-		return (0);
-	}
-	return (0);
+	buffer[bytes_read] = '\0';
+	return (1);
 }
 
-char	*process_buffer(char **temp, char *buffer)
+/* char	*process_buffer(char **temp, char *buffer)
 {
 	char	*completed_line;
 
@@ -55,9 +49,9 @@ char	*process_buffer(char **temp, char *buffer)
 	*temp = completed_line;
 	buffer[0] = '\0';
 	return (0);
-}
+} */
 
-char	*process_endline(char **temp, char *buffer)
+/* char	*process_endline(char **temp, char *buffer)
 {
 	char	*completed_line;
 
@@ -66,32 +60,29 @@ char	*process_endline(char **temp, char *buffer)
 	*temp = NULL;
 	ft_memmove(buffer);
 	return (completed_line);
-}
+} */
 
 char	*get_next_line(int fd)
 {
 	static char	buffer[BUFFER_SIZE + 1];
-	static char	*temp = NULL;
-	static int	final = 0;
+	char		*temp;
+	static int	i = 0;
+	int			j;
 
-	if (final || fd < 0 || BUFFER_SIZE < 1)
-		return (NULL);
+	j = 0;
+	if (fd < 0 || BUFFER_SIZE < 1 || !get_buffer(fd, buffer, &i))
+		return (0);
+	temp = ft_calloc((BUFFER_SIZE + 1), sizeof(char));
 	if (!temp)
-	{
-		temp = ft_calloc((BUFFER_SIZE + 1), sizeof(char));
-		if (!temp)
-			return (NULL);
-	}
-	while (1)
-	{
-		if (buffer[0] == '\0' && get_buffer(fd, temp, buffer) == 1)
-			return (final = 1, temp);
-		if (get_newline_char(buffer) == -1)
-			process_buffer(&temp, buffer);
-		else
-			return (process_endline(&temp, buffer));
-	}
+		return (0);
+	while (ft_strlen(temp) < BUFFER_SIZE && buffer[i] && buffer[i] != '\n')
+		temp[j++] = buffer[i++];
+	if (buffer[i++] == '\n')
+		return(temp);
+	else
+		return (ft_concat(temp, get_next_line(fd)));
 }
+
 
 int main(int argc, char **argv)
 {
