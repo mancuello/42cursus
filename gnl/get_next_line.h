@@ -6,7 +6,7 @@
 /*   By: mcuello <mcuello@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 21:58:52 by mcuello           #+#    #+#             */
-/*   Updated: 2025/02/07 22:54:23 by mcuello          ###   ########.fr       */
+/*   Updated: 2025/02/08 14:54:10 by mcuello          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,13 +26,10 @@
 
 size_t	ft_strlen(const char *c);
 void	*ft_calloc(size_t items, size_t size);
-void	ft_memmove(char *buffer);
 void	ft_copy(char *src, char *dest);
-char	*ft_concat(char *first, char *second);
-int		get_newline_char(char *buffer);
+char	*ft_concat(char **first, char *second);
 int		get_buffer(int fd, char *buffer, int *i);
-char	*process_buffer(char **temp, char *buffer);
-char	*process_endline(char **temp, char *buffer);
+char	*process_buffer(int fd, char *temp);
 char	*get_next_line(int fd);
 
 #endif
