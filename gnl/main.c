@@ -6,7 +6,7 @@
 /*   By: mcuello <mcuello@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/08 14:51:45 by mcuello           #+#    #+#             */
-/*   Updated: 2025/02/08 14:52:21 by mcuello          ###   ########.fr       */
+/*   Updated: 2025/02/11 13:44:50 by mcuello          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,16 +32,15 @@ int main(int argc, char **argv)
         return (1);
     }
 
-    // Lee el archivo línea por línea usando get_next_line
+    // Lee el archivo línea por línea
     while ((line = get_next_line(fd)) != NULL)
     {
-        printf("Sale acá: %s", line); // Muestra la línea leída
-        free(line); // Libera la memoria de la línea
+        printf("Sale acá: %s", line);
+        free(line);
     }
 	if ((line = get_next_line(fd)) == NULL)
 		free(line);
 
-    // Cierra el archivo
     close(fd);
 
     return (0);
