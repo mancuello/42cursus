@@ -6,7 +6,7 @@
 /*   By: mcuello <mcuello@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/26 16:47:15 by mcuello           #+#    #+#             */
-/*   Updated: 2025/03/07 18:45:47 by mcuello          ###   ########.fr       */
+/*   Updated: 2025/03/08 13:36:30 by mcuello          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,22 +23,6 @@ static int	ft_strlen(char *str)
 	return (i);
 }
 
-/* static int check_rectangular(t_map *map)
-{
-	int		i;
-	int		width;
-
-	width = ft_strlen(map->map[0]);
-	i = 1;
-	while (i < map->height)
-	{
-		if (ft_strlen(map->map[i]) != width)
-			return (-1);
-		i++;
-	}
-	map->width = width;
-	return (0);
-} */
 static int check_rectangular(t_map *map)
 {
 	int i;
@@ -56,7 +40,6 @@ static int check_rectangular(t_map *map)
 	map->width = width;
 	return (0);
 }
-
 
 static int check_borders(t_map *map)
 {

@@ -6,14 +6,17 @@
 /*   By: mcuello <mcuello@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/26 11:51:12 by mcuello           #+#    #+#             */
-/*   Updated: 2025/03/04 11:10:32 by mcuello          ###   ########.fr       */
+/*   Updated: 2025/03/10 20:17:23 by mcuello          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SO_LONG_H
 #define SO_LONG_H
 
+# define SPRITE_SIZE 32
+
 # include <stdlib.h>
+# include <stdio.h>
 # include <unistd.h>
 # include <fcntl.h>
 # include <mlx.h>
@@ -32,11 +35,23 @@ typedef struct s_game {
 	void	*mlx;
 	void	*win;
 	t_map	*map;
+	void	*player;
+	void	*wall;
+	void	*collect;
+	void	*exit;
+	void	*floor;
+	int		player_x;
+	int		player_y;
+	int		collected;
+	int		moves;
 }	t_game;
 
 int		read_map(char *filename, t_map *map);
 void	free_map(t_map *map_data);
-int	check_map_rules(t_map *map);
-int	init_game(t_game *game, t_map *map);
+int		check_map_rules(t_map *map);
+int		init_game(t_game *game, t_map *map);
+void 	render_map(t_game *game);
+int	load_sprites(t_game *game);
+
 
 #endif
