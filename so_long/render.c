@@ -6,7 +6,7 @@
 /*   By: mcuello <mcuello@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/08 22:07:11 by mcuello           #+#    #+#             */
-/*   Updated: 2025/03/10 22:11:03 by mcuello          ###   ########.fr       */
+/*   Updated: 2025/03/11 17:13:22 by mcuello          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,5 +44,3 @@ void render_map(t_game *game)
 		y++;
 	}
 }
-
-este render esta mal en la parte de sprite size no hay que multiplicar.
