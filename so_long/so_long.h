@@ -6,7 +6,7 @@
 /*   By: mcuello <mcuello@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/26 11:51:12 by mcuello           #+#    #+#             */
-/*   Updated: 2025/03/11 16:21:57 by mcuello          ###   ########.fr       */
+/*   Updated: 2025/03/11 17:41:44 by mcuello          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 # include <unistd.h>
 # include <fcntl.h>
 # include <mlx.h>
+# include "mlx_keycodes.h"
 //# include "libft.h"
 
 typedef struct s_map {
@@ -51,7 +52,12 @@ void	free_map(t_map *map_data);
 int		check_map_rules(t_map *map);
 int		init_game(t_game *game, t_map *map);
 void 	render_map(t_game *game);
-int	load_sprites(t_game *game);
+int		load_sprites(t_game *game);
+int		exit_game(t_game *game);
+int		key_hook(int keycode, t_game *game);
+void	move_player(t_game *game, int dx, int dy);
+
+
 
 
 #endif
