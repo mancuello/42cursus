@@ -6,7 +6,7 @@
 /*   By: mcuello <mcuello@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/26 12:12:57 by mcuello           #+#    #+#             */
-/*   Updated: 2025/03/05 18:47:13 by mcuello          ###   ########.fr       */
+/*   Updated: 2025/03/17 18:06:15 by mcuello          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,12 @@ static int	count_lines(int fd)
 	int		count;
 
 	count = 0;
-	while ((line = get_next_line(fd)))
+	line = get_next_line(fd);
+	while (line)
 	{
 		count++;
 		free(line);
+		line = get_next_line(fd);
 	}
 	close(fd);
 	return (count);
@@ -32,7 +34,7 @@ int	read_map(char *filename, t_map *map_data)
 {
 	int		fd;
 	int		i;
-	
+
 	fd = open(filename, O_RDONLY);
 	if (fd < 0)
 		return (-1);
@@ -40,8 +42,6 @@ int	read_map(char *filename, t_map *map_data)
 	if (map_data->height == 0)
 		return (-1);
 	fd = open(filename, O_RDONLY);
-	if (fd < 0)
-		return (-1);
 	map_data->map = malloc(sizeof(char *) * (map_data->height + 1));
 	if (!map_data->map)
 		return (-1);
@@ -64,7 +64,7 @@ void	free_map(t_map *map_data)
 	int	i;
 
 	if (!map_data->map)
-		return;
+		return ;
 	i = 0;
 	while (i < map_data->height)
 	{

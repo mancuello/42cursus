@@ -6,12 +6,22 @@
 /*   By: mcuello <mcuello@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 11:11:03 by mcuello           #+#    #+#             */
-/*   Updated: 2025/03/14 18:58:23 by mcuello          ###   ########.fr       */
+/*   Updated: 2025/03/17 17:16:57 by mcuello          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 #include <stdio.h>
+
+int	ft_strlen2(char *str)
+{
+	int	i;
+
+	i = 0;
+	while (str && (str[i] != '\0' && str[i] != '\n'))
+		i++;
+	return (i);
+}
 
 int	init_game(t_game *game, t_map *map)
 {
@@ -21,11 +31,11 @@ int	init_game(t_game *game, t_map *map)
 	game->collected = 0;
 	game->moves = 0;
 	game->mlx = mlx_init();
-	
 	if (!game->mlx)
 		return (ft_error("Error: No se pudo inicializar la Minilibx.\n"));
-	printf("MiniLibX inicializada correctamente.\n");	
-	game->win = mlx_new_window(game->mlx, map->width * SPRITE_SIZE, map->height * SPRITE_SIZE, "so_long");
+	printf("MiniLibX inicializada correctamente.\n");
+	game->win = mlx_new_window(game->mlx, map->width * SPRITE_SIZE,
+			map->height * SPRITE_SIZE, "so_long");
 	if (!game->win)
 		return (ft_error("Error: No se pudo crear la ventana.\n"));
 	if (load_sprites(game) != 0)

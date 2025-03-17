@@ -6,34 +6,25 @@
 /*   By: mcuello <mcuello@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/26 16:47:15 by mcuello           #+#    #+#             */
-/*   Updated: 2025/03/08 13:36:30 by mcuello          ###   ########.fr       */
+/*   Updated: 2025/03/17 17:17:58 by mcuello          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 #include <stdio.h>
 
-static int	ft_strlen(char *str)
+static int	check_rectangular(t_map *map)
 {
 	int	i;
+	int	width;
 
-	i = 0;
-	while (str && (str[i] != '\0' && str[i] != '\n'))
-		i++;
-	return (i);
-}
-
-static int check_rectangular(t_map *map)
-{
-	int i;
-	int width;
-	width = ft_strlen(map->map[0]);
+	width = ft_strlen2(map->map[0]);
 	i = 1;
 	while (i < map->height)
 	{
 		if (!map->map[i])
 			return (-1);
-		if (ft_strlen(map->map[i]) != width)
+		if (ft_strlen2(map->map[i]) != width)
 			return (-1);
 		i++;
 	}
@@ -41,7 +32,7 @@ static int check_rectangular(t_map *map)
 	return (0);
 }
 
-static int check_borders(t_map *map)
+static int	check_borders(t_map *map)
 {
 	int	i;
 
@@ -62,14 +53,19 @@ static int check_borders(t_map *map)
 	return (0);
 }
 
+static void	initial_values(t_map *map)
+{
+	map->player_count = 0;
+	map->collect_count = 0;
+	map->exit_count = 0;
+}
+
 static int	check_elements(t_map *map)
 {
 	int	i;
 	int	j;
 
-	map->player_count = 0;
-	map->collect_count = 0;
-	map->exit_count = 0;
+	initial_values(map);
 	i = 0;
 	while (i < map->height)
 	{
@@ -86,7 +82,8 @@ static int	check_elements(t_map *map)
 		}
 		i++;
 	}
-	if (map->player_count != 1 || map->collect_count < 1 || map->exit_count != 1)
+	if (map->player_count != 1 || map->collect_count < 1
+		|| map->exit_count != 1)
 		return (-1);
 	return (0);
 }
@@ -94,7 +91,7 @@ static int	check_elements(t_map *map)
 int	check_map_rules(t_map *map)
 {
 	if (!map || !map->map)
-        return (-1);
+		return (-1);
 	if (check_rectangular(map) == -1)
 		return (-1);
 	if (check_borders(map) == -1)

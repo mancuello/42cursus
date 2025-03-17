@@ -6,7 +6,7 @@
 /*   By: mcuello <mcuello@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/11 16:04:46 by mcuello           #+#    #+#             */
-/*   Updated: 2025/03/14 19:16:11 by mcuello          ###   ########.fr       */
+/*   Updated: 2025/03/17 17:13:32 by mcuello          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,6 @@
 
 int	exit_game(t_game *game)
 {
-	//int	i;
-	
 	if (game->player)
 		mlx_destroy_image(game->mlx, game->player);
 	if (game->collect)
@@ -29,27 +27,12 @@ int	exit_game(t_game *game)
 	if (game->win)
 		mlx_destroy_window(game->mlx, game->win);
 	free_map(game->map);
-//	i = 0;
-/* 	if (game->map)
-	{
-		if (game->map->map)
-		{
-			while (i < game->map->height)			
-			{
-				free(game->map->map[i]);
-				i++;
-			}
-			free(game->map->map);
-		}
-		free(game->map);
-	} */
 	exit(0);
-	//return (0);
 }
 
 int	key_hook(int keycode, t_game *game)
 {
-	if (keycode ==	KEY_ESC)
+	if (keycode == KEY_ESC)
 		exit_game(game);
 	else if (keycode == KEY_W || keycode == KEY_UP)
 		move_player(game, 0, -1);
@@ -59,5 +42,5 @@ int	key_hook(int keycode, t_game *game)
 		move_player(game, -1, 0);
 	else if (keycode == KEY_D || keycode == KEY_RIGHT)
 		move_player(game, 1, 0);
-	return(0);		
+	return (0);
 }

@@ -6,7 +6,7 @@
 #    By: mcuello <mcuello@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/02/25 21:31:23 by mcuello           #+#    #+#              #
-#    Updated: 2025/03/14 18:48:35 by mcuello          ###   ########.fr        #
+#    Updated: 2025/03/17 17:15:53 by mcuello          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,6 @@ NAME		= so_long
 
 SRC			= main.c \
 			  game.c \
-			  player.c \
 			  map.c \
 			  get_next_line.c \
 			  get_next_line_utils.c \
