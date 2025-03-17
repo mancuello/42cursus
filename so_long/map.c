@@ -6,7 +6,7 @@
 /*   By: mcuello <mcuello@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/26 12:12:57 by mcuello           #+#    #+#             */
-/*   Updated: 2025/03/17 18:06:15 by mcuello          ###   ########.fr       */
+/*   Updated: 2025/03/17 19:25:52 by mcuello          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,20 +59,20 @@ int	read_map(char *filename, t_map *map_data)
 	return (0);
 }
 
-void	free_map(t_map *map_data)
+void	free_map(t_map *map)
 {
 	int	i;
 
-	if (!map_data->map)
+	if (!map->map)
 		return ;
 	i = 0;
-	while (i < map_data->height)
+	while (i < map->height)
 	{
-		free(map_data->map[i]);
+		free(map->map[i]);
 		i++;
 	}
-	free(map_data->map);
-	map_data->map = NULL;
+	free(map->map);
+	map->map = NULL;
 }
 
 //lo que hacemos aqui es leer el mapa y formarlo. leemos linea
