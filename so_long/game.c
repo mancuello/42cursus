@@ -6,7 +6,7 @@
 /*   By: mcuello <mcuello@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 11:11:03 by mcuello           #+#    #+#             */
-/*   Updated: 2025/03/11 17:19:29 by mcuello          ###   ########.fr       */
+/*   Updated: 2025/03/14 18:58:23 by mcuello          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,21 +21,15 @@ int	init_game(t_game *game, t_map *map)
 	game->collected = 0;
 	game->moves = 0;
 	game->mlx = mlx_init();
+	
 	if (!game->mlx)
-	{
-		printf("Error: No se pudo inicializar MiniLibX.\n");
-		return (1);
-	}
+		return (ft_error("Error: No se pudo inicializar la Minilibx.\n"));
 	printf("MiniLibX inicializada correctamente.\n");	
-	game->win = mlx_new_window(game->mlx, map->width * 64, map->height * 64, "so_long");
+	game->win = mlx_new_window(game->mlx, map->width * SPRITE_SIZE, map->height * SPRITE_SIZE, "so_long");
 	if (!game->win)
-	{
-		printf("Error; No se pudo crear la ventana.\n");
-		free(game->mlx);
-		return (1);
-	}
+		return (ft_error("Error: No se pudo crear la ventana.\n"));
 	if (load_sprites(game) != 0)
-		return (1);
+		return (ft_error("Error: No se pueden cargar los sprites.\n"));
 	mlx_key_hook(game->win, key_hook, game);
 	mlx_hook(game->win, 17, 0, exit_game, game);
 	render_map(game);

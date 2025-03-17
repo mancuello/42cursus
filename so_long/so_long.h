@@ -6,7 +6,7 @@
 /*   By: mcuello <mcuello@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/26 11:51:12 by mcuello           #+#    #+#             */
-/*   Updated: 2025/03/11 17:41:44 by mcuello          ###   ########.fr       */
+/*   Updated: 2025/03/14 18:48:05 by mcuello          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,7 @@ int		load_sprites(t_game *game);
 int		exit_game(t_game *game);
 int		key_hook(int keycode, t_game *game);
 void	move_player(t_game *game, int dx, int dy);
+int		ft_error(char *str);
 
 
 

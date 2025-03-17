@@ -6,7 +6,7 @@
 /*   By: mcuello <mcuello@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/27 18:59:05 by mcuello           #+#    #+#             */
-/*   Updated: 2025/03/11 16:21:43 by mcuello          ###   ########.fr       */
+/*   Updated: 2025/03/14 19:10:02 by mcuello          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,24 +25,16 @@ int	main(int argc, char **argv)
 	}
 	if (read_map(argv[1], &map) == -1)
 	{
-		printf("Error: No se pudo leer el mapa.\n");
-		return (1);
+		free_map(&map);
+		return (ft_error("Error: No se pudo leer el mapa.\n"));
 	}
 	printf("verificando reglas del mapa....\n");
 	if (check_map_rules(&map) == -1)
-	{
-		printf("Error: Mapa inválido.\n");
-		free_map(&map);
-		return (1);
-	}
+		return (ft_error("Error: Mapa inválido.\n"));
 	printf("Iniciando el juego...\n");
 	if (init_game(&game, &map) == 1)
-	{
-		free_map(&map);
 		return (1);
-	}
-	printf("Entrando en mlx loop.\n");
 	mlx_loop(game.mlx);
-	free_map(&map);
+	exit_game(&game);
 	return (0);
 }

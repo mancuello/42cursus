@@ -6,7 +6,7 @@
 /*   By: mcuello <mcuello@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/11 16:04:46 by mcuello           #+#    #+#             */
-/*   Updated: 2025/03/11 17:22:06 by mcuello          ###   ########.fr       */
+/*   Updated: 2025/03/14 19:16:11 by mcuello          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	exit_game(t_game *game)
 {
-	int	i;
+	//int	i;
 	
 	if (game->player)
 		mlx_destroy_image(game->mlx, game->player);
@@ -28,8 +28,9 @@ int	exit_game(t_game *game)
 		mlx_destroy_image(game->mlx, game->floor);
 	if (game->win)
 		mlx_destroy_window(game->mlx, game->win);
-	i = 0;
-	if (game->map)
+	free_map(game->map);
+//	i = 0;
+/* 	if (game->map)
 	{
 		if (game->map->map)
 		{
@@ -41,9 +42,9 @@ int	exit_game(t_game *game)
 			free(game->map->map);
 		}
 		free(game->map);
-	}
+	} */
 	exit(0);
-	return (0);
+	//return (0);
 }
 
 int	key_hook(int keycode, t_game *game)
