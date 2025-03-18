@@ -6,7 +6,7 @@
 /*   By: mcuello <mcuello@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/11 16:04:46 by mcuello           #+#    #+#             */
-/*   Updated: 2025/03/17 19:37:53 by mcuello          ###   ########.fr       */
+/*   Updated: 2025/03/18 16:16:08 by mcuello          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int	exit_game(t_game *game)
 		mlx_destroy_window(game->mlx, game->win);
 	mlx_destroy_display(game->mlx);
 	free_map(game->map);
-	free(game);
+	free(game->mlx);
 	exit(0);
 }
 
