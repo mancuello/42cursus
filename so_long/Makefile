@@ -6,7 +6,7 @@
 #    By: mcuello <mcuello@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/02/25 21:31:23 by mcuello           #+#    #+#              #
-#    Updated: 2025/03/17 17:15:53 by mcuello          ###   ########.fr        #
+#    Updated: 2025/03/19 15:24:40 by mcuello          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,6 +23,7 @@ SRC			= main.c \
 			  player_moves.c \
 			  sprites.c \
 			  ft_error.c \
+			  check_valid_path.c \
 
 OBJ			= $(SRC:.c=.o)
 

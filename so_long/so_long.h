@@ -6,7 +6,7 @@
 /*   By: mcuello <mcuello@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/26 11:51:12 by mcuello           #+#    #+#             */
-/*   Updated: 2025/03/17 17:20:49 by mcuello          ###   ########.fr       */
+/*   Updated: 2025/03/19 17:10:06 by mcuello          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,12 @@ typedef struct s_game
 	int		moves;
 }	t_game;
 
+typedef struct s_pos
+{
+	int	y;
+	int	x;
+}	t_pos;
+
 int		read_map(char *filename, t_map *map);
 void	free_map(t_map *map_data);
 int		check_map_rules(t_map *map);
@@ -60,5 +66,6 @@ int		key_hook(int keycode, t_game *game);
 void	move_player(t_game *game, int dx, int dy);
 int		ft_error(char *str);
 int		ft_strlen2(char *str);
+int		check_valid_path(t_map *map);
 
 #endif

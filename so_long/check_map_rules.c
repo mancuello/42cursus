@@ -6,7 +6,7 @@
 /*   By: mcuello <mcuello@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/26 16:47:15 by mcuello           #+#    #+#             */
-/*   Updated: 2025/03/17 17:17:58 by mcuello          ###   ########.fr       */
+/*   Updated: 2025/03/19 16:01:18 by mcuello          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,6 +97,8 @@ int	check_map_rules(t_map *map)
 	if (check_borders(map) == -1)
 		return (-1);
 	if (check_elements(map) == -1)
+		return (-1);
+	if (check_valid_path(map) == -1)
 		return (-1);
 	return (0);
 }
