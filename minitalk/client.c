@@ -6,7 +6,7 @@
 /*   By: mcuello <mcuello@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/28 21:50:33 by mcuello           #+#    #+#             */
-/*   Updated: 2025/03/31 22:22:20 by mcuello          ###   ########.fr       */
+/*   Updated: 2025/04/01 17:12:42 by mcuello          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,13 +21,25 @@ static void	send_bits(int pid, unsigned char bit)
 		kill(pid, SIGUSR1);
 	else
 		kill(pid, SIGUSR2);
-	usleep(200);
+	usleep(400);
+}
+
+static void	send_newline_char(int pid)
+{
+	send_bits(pid, 0);
+	send_bits(pid, 0);
+	send_bits(pid, 0);
+	send_bits(pid, 0);
+	send_bits(pid, 1);
+	send_bits(pid, 0);
+	send_bits(pid, 1);
+	send_bits(pid, 0);
 }
 
 static void	send_message(int pid, char *message)
 {
 	int	i;
-	static int	bit = 7;
+	int	bit;
 
 	i = 0;
 	while (message[i] != '\0')
@@ -40,14 +52,7 @@ static void	send_message(int pid, char *message)
 		}
 		i++;
 	}
-	send_bits(pid, 0);
-	send_bits(pid, 0);
-	send_bits(pid, 0);
-	send_bits(pid, 0);
-	send_bits(pid, 1);
-	send_bits(pid, 0);
-	send_bits(pid, 1);
-	send_bits(pid, 0);
+	send_newline_char(pid);
 }
 
 int	main(int argc, char **argv)
@@ -55,14 +60,17 @@ int	main(int argc, char **argv)
 	int server_pid;
 	char *message;
 
-	if (argc == 1)
+	if (argc == 3)
+	{
+		server_pid = ft_atoi(argv[1]);
+		message = argv[2];
+
+		send_message(server_pid, message);
+		return (0);	
+	}
+	else
 	{
 		printf("Uso: <%s> <PID> <\"Cadena a Pasar\">", argv[0]);
 		return (1);
 	}
-	server_pid = ft_atoi(argv[1]);
-	message = argv[2];
-
-	send_message(server_pid, message);
-	return (0);	
 }

@@ -6,7 +6,7 @@
 /*   By: mcuello <mcuello@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/28 22:42:38 by mcuello           #+#    #+#             */
-/*   Updated: 2025/03/31 21:39:03 by mcuello          ###   ########.fr       */
+/*   Updated: 2025/04/01 17:06:50 by mcuello          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,12 @@
 #include <signal.h>
 #include <stdio.h>
 
-static char	caracter = 0;
-static int bit = 0;
 
 static void handler_sig(int sig)
 {
+	static char	caracter = 0;
+	static int bit = 0;
+	
 	caracter <<= 1;
 	if (sig == SIGUSR1)
 	{
