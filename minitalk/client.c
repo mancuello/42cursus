@@ -6,12 +6,12 @@
 /*   By: mcuello <mcuello@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/28 21:50:33 by mcuello           #+#    #+#             */
-/*   Updated: 2025/04/01 17:12:42 by mcuello          ###   ########.fr       */
+/*   Updated: 2025/04/07 14:34:27 by mcuello          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <signal.h>
-#include <stdio.h>
+#include "ft_printf.h"
 #include <unistd.h>
 #include "client.h"
 
@@ -21,7 +21,7 @@ static void	send_bits(int pid, unsigned char bit)
 		kill(pid, SIGUSR1);
 	else
 		kill(pid, SIGUSR2);
-	usleep(400);
+	usleep(450);
 }
 
 static void	send_newline_char(int pid)
@@ -70,7 +70,7 @@ int	main(int argc, char **argv)
 	}
 	else
 	{
-		printf("Uso: <%s> <PID> <\"Cadena a Pasar\">", argv[0]);
+		ft_printf("Uso: <%s> <PID> <\"Cadena a Pasar\">", argv[0]);
 		return (1);
 	}
 }

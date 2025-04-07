@@ -6,13 +6,13 @@
 /*   By: mcuello <mcuello@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/28 22:42:38 by mcuello           #+#    #+#             */
-/*   Updated: 2025/04/01 17:06:50 by mcuello          ###   ########.fr       */
+/*   Updated: 2025/04/07 14:33:26 by mcuello          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 #include <signal.h>
-#include <stdio.h>
+#include "ft_printf.h"
 
 
 static void handler_sig(int sig)
@@ -39,12 +39,12 @@ int	main(void)
 
 	write(1, "Iniciando Server...\n", 20);
 	sleep(2);
-	printf("\nSERVER   --ONLINE--\n");
+	ft_printf("\nSERVER   --ONLINE--\n");
 	sleep(1);
-	printf("Información de PID => %d\n", getpid());
+	ft_printf("Información de PID => %d\n", getpid());
 	signal(SIGUSR1, handler_sig);
 	signal(SIGUSR2, handler_sig);
-	printf("Esperando señales...\n");
+	ft_printf("Esperando señales...\n");
 	while (1)
 		pause();
 	return (0);
