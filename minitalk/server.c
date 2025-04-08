@@ -6,7 +6,7 @@
 /*   By: mcuello <mcuello@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/28 22:42:38 by mcuello           #+#    #+#             */
-/*   Updated: 2025/04/07 18:21:40 by mcuello          ###   ########.fr       */
+/*   Updated: 2025/04/08 16:43:22 by mcuello          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,12 @@
 #include "ft_printf.h"
 #include <signal.h>
 
-
-static void handler_sig(int sig, siginfo_t *info, void *ucontext)
+static void	handler_sig(int sig, siginfo_t *info, void *ucontext)
 {
 	static char	caracter = 0;
-	static int bit = 0;
-	
+	static int	bit = 0;
+
+	(void)ucontext;
 	caracter <<= 1;
 	if (sig == SIGUSR1)
 	{
@@ -38,7 +38,7 @@ static void handler_sig(int sig, siginfo_t *info, void *ucontext)
 
 int	main(void)
 {
-	struct sigaction sa;
+	struct sigaction	sa;
 
 	sa.sa_sigaction = handler_sig;
 	sigemptyset(&sa.sa_mask);

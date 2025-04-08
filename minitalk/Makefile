@@ -6,7 +6,7 @@
 #    By: mcuello <mcuello@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/03/28 20:55:03 by mcuello           #+#    #+#              #
-#    Updated: 2025/04/07 18:16:09 by mcuello          ###   ########.fr        #
+#    Updated: 2025/04/08 14:06:21 by mcuello          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,7 +23,7 @@ OBJ2		= $(SRC2:.c=.o)
 
 CC			= cc
 
-CFLAGS		= -Wall -Wextra -Werror -D_POSIX_C_SOURCE=200809L -I$(FT_PRINTF_DIR)
+CFLAGS		= -Wall -Wextra -Werror -I$(FT_PRINTF_DIR)
 
 FT_PRINTF_DIR = ft_printf
 
