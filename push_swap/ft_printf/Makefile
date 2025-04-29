@@ -5,45 +5,45 @@
 #                                                     +:+ +:+         +:+      #
 #    By: mcuello <mcuello@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2025/04/13 17:49:10 by mcuello           #+#    #+#              #
-#    Updated: 2025/04/27 15:23:59 by mcuello          ###   ########.fr        #
+#    Created: 2025/01/10 14:03:17 by mcuello           #+#    #+#              #
+#    Updated: 2025/02/01 16:51:06 by mcuello          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME			= push_swap
+NAME		= libftprintf.a
 
-SRC				= list_handler.c\
-				  normalization.c\
-				  radix_sort.c\
-				  main.c\
+SRC			= ft_printf.c\
+			  aux1.c\
+			  aux2.c\
+			  aux3.c
 
-OBJ				= $(SRC:.c=.o)
+#LIBFT_SRC	= libft/ft_strlen.c
 
-CC				= cc
+OBJS		= $(SRC:%.c=%.o)
 
-CFLAGS			= -Wall -Wextra -Werror
+#LIBFT_OBJ	= $(LIBFT_SRC:%.c=%.o)
 
-FT_PRINTF_DIR	= ft_printf
+CC			= cc
 
-FT_PRINTF		= $(FT_PRINTF_DIR)/libftprintf.a
-
-all: $(FT_PRINTF) $(NAME)
-
-$(FT_PRINTF):
-	@make -C $(FT_PRINTF_DIR) --no-print-directory
-
-
-$(NAME): $(OBJ)
-	$(CC) $(OBJ) $(FT_PRINTF) -o $(NAME)
+CFLAGS		= -Wall -Werror -Wextra
 
 %.o: %.c
-	$(CC) $(CFLAGS) -c $< -o $@
+		$(CC) $(CFLAGS) -c -o $@ $<
+
+all: $(NAME)
+
+$(NAME): $(OBJS)
+		ar rcs $(NAME) $(OBJS)
+		echo "Library compiled"
 
 clean:
-	rm -f $(OBJ)
+		rm -f $(OBJS)
+		echo ".o files removed"
 
 fclean: clean
-	make -C $(FT_PRINTF_DIR) fclean --no-print-directory 
-	rm -f $(NAME)
+		rm -f $(NAME)
+		echo "Library removed"
 
 re: fclean all
+
+.PHONY: all clean fclean re bonus
