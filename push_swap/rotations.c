@@ -6,7 +6,7 @@
 /*   By: mcuello <mcuello@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/08 19:05:44 by mcuello           #+#    #+#             */
-/*   Updated: 2025/05/09 15:09:46 by mcuello          ###   ########.fr       */
+/*   Updated: 2025/05/09 20:18:52 by mcuello          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,10 +67,13 @@ void	do_rotations(int cheap, t_list **stack_a, t_list **stack_b)
 	unsigned int	index_to_find;
 
 	if (cheap == 0)
+	{
 		index_to_find = find_max_index(*stack_b);
-	index_to_find = cheap - 1;
+		moves_b = moves_stack(*stack_b, index_to_find);
+	}
+	else
+		moves_b = extra_checks(*stack_b, cheap);
 	moves_a = moves_stack(*stack_a, (unsigned int)cheap);
-	moves_b = moves_stack(*stack_b, index_to_find);
 	both_rotations(&moves_a, &moves_b, stack_a, stack_b);
 	single_rotations(moves_a, stack_a, 'a');
 	single_rotations(moves_b, stack_b, 'b');

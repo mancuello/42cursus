@@ -6,7 +6,7 @@
 /*   By: mcuello <mcuello@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/14 11:16:32 by mcuello           #+#    #+#             */
-/*   Updated: 2025/05/09 16:14:38 by mcuello          ###   ########.fr       */
+/*   Updated: 2025/05/09 19:42:48 by mcuello          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ void			sort_stack(t_list **stack);
 void			final_check(t_list **stack, char x);
 void			single_rotations(int moves, t_list **stack, char x);
 int				moves_stack(t_list *stack, unsigned int index);
+int				extra_checks(t_list *stack_b, unsigned int index);
 int				sorted(t_list *stack);
 int				abs_value(int a);
 void			free_all(t_list *stack);

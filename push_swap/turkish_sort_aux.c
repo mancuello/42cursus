@@ -6,7 +6,7 @@
 /*   By: mcuello <mcuello@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/08 19:03:55 by mcuello           #+#    #+#             */
-/*   Updated: 2025/05/09 17:37:06 by mcuello          ###   ########.fr       */
+/*   Updated: 2025/05/09 18:58:19 by mcuello          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@ void	final_check(t_list **stack, char x)
 	else if ( x == 'b')
 	{
 		if  (first < last)
-			rotate(stack, 'b');
+			rotate(stack, 'b');		
 	}
 }
 

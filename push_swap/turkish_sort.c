@@ -6,7 +6,7 @@
 /*   By: mcuello <mcuello@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/29 20:10:19 by mcuello           #+#    #+#             */
-/*   Updated: 2025/05/09 17:52:21 by mcuello          ###   ########.fr       */
+/*   Updated: 2025/05/09 20:20:41 by mcuello          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -145,6 +145,11 @@ void	turkish_sort(t_list **stack_a, t_list **stack_b)
 			cheap = find_cheap(*stack_a, *stack_b);
 			do_rotations(cheap, stack_a, stack_b);
 			push(stack_a, stack_b, 'b');
+/* 			while (copy)
+			{
+				ft_printf("stack_b->index: %u\n", copy->index);
+				copy = copy->next;
+			} */
 			while (!reverse_sorted(*stack_b))
 				final_check(stack_b, 'b');
 		}
