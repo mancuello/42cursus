@@ -6,7 +6,7 @@
 /*   By: mcuello <mcuello@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/21 13:58:43 by mcuello           #+#    #+#             */
-/*   Updated: 2025/04/28 21:26:10 by mcuello          ###   ########.fr       */
+/*   Updated: 2025/05/08 18:36:56 by mcuello          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int	stack_len(t_list *stack)
 	int	count;
 
 	count = 0;
-	while(stack)
+	while (stack)
 	{
 		count++;
 		stack = stack->next;
@@ -27,7 +27,7 @@ int	stack_len(t_list *stack)
 
 static int	*create_arr(t_list	*stack)
 {
-	int *arr;
+	int	*arr;
 	int	i;
 	int	len;
 
@@ -91,7 +91,7 @@ void	normalize_stack(t_list *stack)
 {
 	unsigned int	len;
 	int				*arr;
-	
+
 	len = stack_len(stack);
 	arr = create_arr(stack);
 	if (!arr)

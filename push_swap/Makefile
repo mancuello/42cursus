@@ -6,44 +6,66 @@
 #    By: mcuello <mcuello@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/04/13 17:49:10 by mcuello           #+#    #+#              #
-#    Updated: 2025/04/27 15:23:59 by mcuello          ###   ########.fr        #
+#    Updated: 2025/05/08 23:48:32 by mcuello          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME			= push_swap
 
+BONUS			= checker
+
 SRC				= list_handler.c\
+				  list_handler_aux.c\
+				  parsing.c\
 				  normalization.c\
-				  radix_sort.c\
-				  main.c\
+				  rotations.c\
+				  turkish_sort.c\
+				  turkish_sort_aux.c\
+				  push_swap.c\
+
+BONUS_SRC		= list_handler.c\
+				  list_handler_aux.c\
+				  parsing.c\
+				  rotations.c\
+				  normalization.c\
+				  turkish_sort.c\
+				  turkish_sort_aux.c\
+				  checker.c\
 
 OBJ				= $(SRC:.c=.o)
+
+BONUS_OBJ		= $(BONUS_SRC:.c=.o)
 
 CC				= cc
 
 CFLAGS			= -Wall -Wextra -Werror
 
-FT_PRINTF_DIR	= ft_printf
+LIBFT_DIR		= libft
 
-FT_PRINTF		= $(FT_PRINTF_DIR)/libftprintf.a
+LIBFT			= $(LIBFT_DIR)/libft.a
 
-all: $(FT_PRINTF) $(NAME)
+all: $(LIBFT) $(NAME)
 
-$(FT_PRINTF):
-	@make -C $(FT_PRINTF_DIR) --no-print-directory
+$(LIBFT):
+	@make -C $(LIBFT_DIR) --no-print-directory
 
 
 $(NAME): $(OBJ)
-	$(CC) $(OBJ) $(FT_PRINTF) -o $(NAME)
+	$(CC) $(OBJ) $(LIBFT) -o $(NAME)
 
 %.o: %.c
-	$(CC) $(CFLAGS) -c $< -o $@
+	$(CC) $(CFLAGS) -I libft/include -c $< -o $@
+
+bonus: $(BONUS)
+
+$(BONUS): $(BONUS_OBJ)
+	$(CC) $(BONUS_OBJ) $(LIBFT) -o $(BONUS)
 
 clean:
-	rm -f $(OBJ)
+	rm -f $(OBJ) $(BONUS_OBJ)
 
 fclean: clean
-	make -C $(FT_PRINTF_DIR) fclean --no-print-directory 
-	rm -f $(NAME)
+	make -C $(LIBFT_DIR) fclean --no-print-directory 
+	rm -f $(NAME) $(BONUS)
 
 re: fclean all

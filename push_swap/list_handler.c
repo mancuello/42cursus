@@ -6,7 +6,7 @@
 /*   By: mcuello <mcuello@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/14 11:29:24 by mcuello           #+#    #+#             */
-/*   Updated: 2025/04/27 15:30:06 by mcuello          ###   ########.fr       */
+/*   Updated: 2025/05/08 18:24:51 by mcuello          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 t_list	*ft_lstnew(int n)
 {
-	t_list *head;
+	t_list	*head;
 
 	head = malloc(sizeof(t_list));
 	if (!head)
@@ -25,26 +25,32 @@ t_list	*ft_lstnew(int n)
 	return (head);
 }
 
-void	swap(t_list *stack)
+void	swap(t_list **stack, char x)
 {
-	int	temp;
+	t_list	*first;
+	t_list	*second;
 
-	temp = 0;
-	if (stack && stack->next)
-	{
-		temp = stack->data;
-		stack->data = stack->next->data;
-		stack->next->data = temp;
-	}
+	if (!*stack || !(*stack)->next)
+		return ;
+	first = *stack;
+	second = (*stack)->next;
+	first->next = second->next;
+	second->next = first;
+	*stack = second;
+	if (x == 'a')
+		write(1, "sa\n", 3);
+	else if (x == 'b')
+		write(1, "sb\n", 3);
 }
 
-void	sswap(t_list *stack_a, t_list *stack_b)
+void	sswap(t_list **stack_a, t_list **stack_b)
 {
-	swap(stack_a);
-	swap(stack_b);
+	swap(stack_a, 0);
+	swap(stack_b, 0);
+	write(1, "ss\n", 3);
 }
 
-void	push(t_list **src, t_list **dest)
+void	push(t_list **src, t_list **dest, char x)
 {
 	t_list	*temp;
 
@@ -54,46 +60,8 @@ void	push(t_list **src, t_list **dest)
 	*src = (*src)->next;
 	temp->next = *dest;
 	*dest = temp;
-}
-
-void	rotate(t_list **src)
-{
-	t_list *first;
-	t_list *last;
-
-	if (!*src || !(*src)->next)
-		return ;
-	first = *src;
-	*src = first->next;
-	last = *src;
-	while (last->next)
-		last = last->next;
-	last->next = first;
-	first->next = NULL;
-}
-
-void	rotate_both(t_list **list_a, t_list **list_b)
-{
-	rotate(list_a);
-	rotate(list_b);
-}
-
-void	reverse_rotate(t_list **src)
-{
-	t_list *last;
-
-	if (!*src || !(*src)->next)
-		return ;
-	last = *src;
-	while (last->next->next)
-		last = last->next;
-	last->next->next = *src;
-	*src = last->next;
-	last->next = NULL;	
-}
-
-void	reverse_rotate_both(t_list **list_a, t_list **list_b)
-{
-	reverse_rotate(list_a);
-	reverse_rotate(list_b);
+	if (x == 'a')
+		write(1, "pa\n", 3);
+	else if (x == 'b')
+		write(1, "pb\n", 3);
 }

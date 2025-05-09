@@ -1,57 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mcuello <mcuello@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/13 17:48:51 by mcuello           #+#    #+#             */
-/*   Updated: 2025/04/28 21:28:31 by mcuello          ###   ########.fr       */
+/*   Updated: 2025/05/09 01:48:00 by mcuello          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include "ft_printf/ft_printf.h"
 
-void	print_list(t_list *stack)
+void	short_sort(t_list **stack)
 {
-	while (stack)
-	{
-		ft_printf("%i", stack->index);
-		stack = stack->next;
-	}
+	if ((*stack)->index > (*stack)->next->index)
+		swap(stack, 'a');
 }
 
 int	main(int argc, char **argv)
 {
 	t_list	*stack_a;
 	t_list	*stack_b;
-	t_list	*head_dir;
-	unsigned int	i = 1;
-	
+
+	stack_b = NULL;
 	if (argc == 1)
-	{
+		return (0);
+	stack_a = parse_arg(argv);
+	if (!stack_a)
 		return (1);
-	}
-	else
-	{
-		while (argv[i])
-		{
-			if (i == 1)
-			{
-				head_dir = ft_lstnew(atoi(argv[i++]));
-				stack_a = head_dir;
-			}
-			else
-			{
-				stack_a->next = ft_lstnew(atoi(argv[i++]));
-				stack_a = stack_a->next;
-			}
-		}
-		stack_a = head_dir;
-		normalize_stack(stack_a);
-		//print_list(stack_a);
-		radix_sort(&stack_a, &stack_b);
-	}
+	normalize_stack(stack_a);
+	if (stack_len(stack_a) == 2)
+		short_sort(&stack_a);
+	else if (stack_len(stack_a) > 2)
+		turkish_sort(&stack_a, &stack_b);
+	free_all(stack_a),
+	free_all(stack_b);
 	return (0);
 }

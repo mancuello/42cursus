@@ -6,7 +6,7 @@
 #    By: mcuello <mcuello@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/12/16 13:15:57 by mcuello           #+#    #+#              #
-#    Updated: 2025/05/08 23:23:59 by mcuello          ###   ########.fr        #
+#    Updated: 2025/05/09 01:31:16 by mcuello          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,6 +25,7 @@ SRCS		= ft_memset.c \
 			  ft_strrchr.c \
 			  ft_strnstr.c \
 			  ft_strncmp.c \
+			  ft_strcmp.c \
 			  ft_atoi.c \
 			  ft_isalpha.c \
 			  ft_isdigit.c \
@@ -70,7 +71,7 @@ $(NAME): $(OBJS)
 	ar rcs $(NAME) $(OBJS)
 
 %.o: %.c
-	$(CC) $(CFLAGS) -I include -c $< -o $@
+	$(CC) $(CFLAGS) -Iinclude -c $< -o $@
 
 bonus: $(NAME) $(BNS_OBJS)
 	ar rcs $(NAME) $(BNS_OBJS)

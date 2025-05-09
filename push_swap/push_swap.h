@@ -6,17 +6,20 @@
 /*   By: mcuello <mcuello@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/14 11:16:32 by mcuello           #+#    #+#             */
-/*   Updated: 2025/04/28 20:50:25 by mcuello          ###   ########.fr       */
+/*   Updated: 2025/05/09 16:14:38 by mcuello          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
-#include <unistd.h>
-#include <stdlib.h>
-#include <stdio.h>
-#include "ft_printf/ft_printf.h"
+# include <unistd.h>
+# include <stdlib.h>
+# include <stdio.h>
+# include <limits.h>
+# include "libft/include/libft.h"
+# include "libft/include/get_next_line.h"
+# include "libft/include/ft_printf.h"
 
 typedef struct s_list
 {
@@ -25,14 +28,30 @@ typedef struct s_list
 	struct s_list	*next;
 }	t_list;
 
-void	normalize_stack(t_list *stack);
-int		stack_len(t_list *stack);
-void	radix_sort(t_list **stack_a, t_list **stack_b);
-void	push(t_list **src, t_list **dest);
-void	rotate(t_list **src);
-t_list	*ft_lstnew(int n);
-void	print_list(t_list *stack);
-
+t_list			*ft_lstnew(int n);
+t_list			*parse_arg(char **argv);
+int				stack_len(t_list *stack);
+void			normalize_stack(t_list *stack);
+void			radix_sort(t_list **stack_a, t_list **stack_b);
+void			swap(t_list **stack, char x);
+void			sswap(t_list **stack_a, t_list **stack_b);
+void			push(t_list **src, t_list **dest, char x);
+void			rotate(t_list **src, char x);
+void			rotate_both(t_list **list_a, t_list **list_b, int i);
+void			reverse_rotate(t_list **src, char x);
+void			reverse_rotate_both(t_list **list_a, t_list **list_b, int i);
+void			print_list(t_list *stack);
+void			turkish_sort(t_list **stack_a, t_list **stack_b);
+void			do_rotations(int cheap, t_list **stack_a, t_list **stack_b);
+void			sort_stack(t_list **stack);
+void			final_check(t_list **stack, char x);
+void			single_rotations(int moves, t_list **stack, char x);
+int				moves_stack(t_list *stack, unsigned int index);
+int				sorted(t_list *stack);
+int				abs_value(int a);
+void			free_all(t_list *stack);
+unsigned int	find_max_index(t_list *stack);
+int				reverse_sorted(t_list *stack);
 
 
 #endif
