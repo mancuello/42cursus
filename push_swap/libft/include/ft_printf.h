@@ -6,7 +6,7 @@
 /*   By: mcuello <mcuello@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 17:50:48 by mcuello           #+#    #+#             */
-/*   Updated: 2025/05/08 23:37:57 by mcuello          ###   ########.fr       */
+/*   Updated: 2025/05/13 00:11:04 by mcuello          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include <stdio.h>
-# include "ft_printf.h"
 # include "get_next_line.h"
+# include "libft.h"
 
 void		ft_putchar(char c);
 int			ft_printf(char const *s, ...);

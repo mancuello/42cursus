@@ -6,7 +6,7 @@
 #    By: mcuello <mcuello@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/04/13 17:49:10 by mcuello           #+#    #+#              #
-#    Updated: 2025/05/08 23:48:32 by mcuello          ###   ########.fr        #
+#    Updated: 2025/05/12 23:56:05 by mcuello          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,15 +22,21 @@ SRC				= list_handler.c\
 				  turkish_sort.c\
 				  turkish_sort_aux.c\
 				  push_swap.c\
+				  radix_sort.c\
+				  quick_sort.c\
+				  aux.c\
 
-BONUS_SRC		= list_handler.c\
+BONUS_SRC		= checker.c\
 				  list_handler_aux.c\
+				  list_handler.c\
 				  parsing.c\
-				  rotations.c\
 				  normalization.c\
+				  rotations.c\
 				  turkish_sort.c\
 				  turkish_sort_aux.c\
-				  checker.c\
+				  radix_sort.c\
+				  quick_sort.c\
+				  aux.c\
 
 OBJ				= $(SRC:.c=.o)
 

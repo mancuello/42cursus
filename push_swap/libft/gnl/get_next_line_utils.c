@@ -6,23 +6,11 @@
 /*   By: mcuello <mcuello@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 12:37:23 by mcuello           #+#    #+#             */
-/*   Updated: 2025/05/09 01:28:27 by mcuello          ###   ########.fr       */
+/*   Updated: 2025/05/13 00:07:56 by mcuello          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
-
-size_t	ft_strlen(const char *c)
-{
-	size_t	i;
-
-	i = 0;
-	if (!c)
-		return (0);
-	while (c[i] != '\0')
-		i++;
-	return (i);
-}
 
 void	*ft_calloc(size_t items, size_t size)
 {

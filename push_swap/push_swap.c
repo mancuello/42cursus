@@ -6,7 +6,7 @@
 /*   By: mcuello <mcuello@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/13 17:48:51 by mcuello           #+#    #+#             */
-/*   Updated: 2025/05/09 01:48:00 by mcuello          ###   ########.fr       */
+/*   Updated: 2025/05/12 23:08:16 by mcuello          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ int	main(int argc, char **argv)
 {
 	t_list	*stack_a;
 	t_list	*stack_b;
+	int		len;
 
 	stack_b = NULL;
 	if (argc == 1)
@@ -30,10 +31,13 @@ int	main(int argc, char **argv)
 	if (!stack_a)
 		return (1);
 	normalize_stack(stack_a);
-	if (stack_len(stack_a) == 2)
+	len = stack_len(stack_a);
+	if (len == 2)
 		short_sort(&stack_a);
-	else if (stack_len(stack_a) > 2)
+	else if (len <= 10)
 		turkish_sort(&stack_a, &stack_b);
+	else
+		quick_sort(&stack_a, &stack_b);
 	free_all(stack_a),
 	free_all(stack_b);
 	return (0);

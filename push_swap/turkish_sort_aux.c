@@ -6,18 +6,11 @@
 /*   By: mcuello <mcuello@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/08 19:03:55 by mcuello           #+#    #+#             */
-/*   Updated: 2025/05/09 18:58:19 by mcuello          ###   ########.fr       */
+/*   Updated: 2025/05/12 23:28:09 by mcuello          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-int	abs_value(int a)
-{
-	if (a < 0)
-		return (a * (-1));
-	return (a);
-}
 
 int	sorted(t_list *stack)
 {
@@ -79,10 +72,10 @@ void	final_check(t_list **stack, char x)
 		if (first > last)
 			reverse_rotate(stack, 'a');
 	}
-	else if ( x == 'b')
+	else if (x == 'b')
 	{
-		if  (first < last)
-			rotate(stack, 'b');		
+		if (first < last)
+			rotate(stack, 'b');
 	}
 }
 

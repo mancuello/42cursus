@@ -6,13 +6,13 @@
 /*   By: mcuello <mcuello@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/08 20:00:11 by mcuello           #+#    #+#             */
-/*   Updated: 2025/05/09 13:19:00 by mcuello          ###   ########.fr       */
+/*   Updated: 2025/05/13 00:27:21 by mcuello          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	do_sort(char *line, t_list **stack_a, t_list **stack_b)
+static int	do_sort(char *line, t_list **stack_a, t_list **stack_b)
 {
 	if (ft_strcmp(line, "sa\n") == 0)
 		swap(stack_a, 'x');
@@ -71,6 +71,7 @@ int	main(int argc, char **argv)
 		return (0);
 	stack_a = parse_arg(argv);
 	stack_b = NULL;
+	normalize_stack(stack_a);
 	if (!process_stdin(&stack_a, &stack_b))
 		return (1);
 	if (sorted(stack_a) && !stack_b)

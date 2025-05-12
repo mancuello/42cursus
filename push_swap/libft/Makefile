@@ -6,7 +6,7 @@
 #    By: mcuello <mcuello@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/12/16 13:15:57 by mcuello           #+#    #+#              #
-#    Updated: 2025/05/09 01:31:16 by mcuello          ###   ########.fr        #
+#    Updated: 2025/05/13 00:14:26 by mcuello          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -59,6 +59,7 @@ PRINT_SRC	= ft_printf/ft_printf.c\
 			  ft_printf/aux3.c\
 
 OBJS		= $(SRCS:%.c=%.o) $(GNL_SRC:%.c=%.o) $(PRINT_SRC:%.c=%.o)
+			  
 BNS_OBJS	= $(BNS_SRCS:%.c=%.o)
 
 CFLAGS		= -Wall -Werror -Wextra

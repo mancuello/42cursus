@@ -6,7 +6,7 @@
 /*   By: mcuello <mcuello@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/14 11:16:32 by mcuello           #+#    #+#             */
-/*   Updated: 2025/05/09 19:42:48 by mcuello          ###   ########.fr       */
+/*   Updated: 2025/05/12 23:36:18 by mcuello          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,10 @@ int				abs_value(int a);
 void			free_all(t_list *stack);
 unsigned int	find_max_index(t_list *stack);
 int				reverse_sorted(t_list *stack);
-
+void			sort_arr(int *arr, unsigned int len);
+void			quick_sort(t_list **a, t_list **b);
+void			initial_push(t_list **stack_a, t_list **stack_b, int len);
+int				min_index(t_list *stack, unsigned int index);
+int				found_index(t_list *stack, unsigned int index);
 
 #endif

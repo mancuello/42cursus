@@ -6,7 +6,7 @@
 /*   By: mcuello <mcuello@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/21 13:58:43 by mcuello           #+#    #+#             */
-/*   Updated: 2025/05/08 18:36:56 by mcuello          ###   ########.fr       */
+/*   Updated: 2025/05/12 14:33:57 by mcuello          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ static int	*create_arr(t_list	*stack)
 	return (arr);
 }
 
-static void	sort_arr(int *arr, unsigned int len)
+void	sort_arr(int *arr, unsigned int len)
 {
 	int				temp;
 	unsigned int	i;

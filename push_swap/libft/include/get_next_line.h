@@ -6,7 +6,7 @@
 /*   By: mcuello <mcuello@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 21:58:52 by mcuello           #+#    #+#             */
-/*   Updated: 2025/02/08 14:54:10 by mcuello          ###   ########.fr       */
+/*   Updated: 2025/05/13 00:10:14 by mcuello          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,8 @@
 # include <fcntl.h>
 # include <stddef.h>
 # include <unistd.h>
+# include "libft.h"
 
-size_t	ft_strlen(const char *c);
 void	*ft_calloc(size_t items, size_t size);
 void	ft_copy(char *src, char *dest);
 char	*ft_concat(char **first, char *second);
