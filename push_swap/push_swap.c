@@ -6,7 +6,7 @@
 /*   By: mcuello <mcuello@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/13 17:48:51 by mcuello           #+#    #+#             */
-/*   Updated: 2025/05/13 18:46:24 by mcuello          ###   ########.fr       */
+/*   Updated: 2025/05/13 21:33:09 by mcuello          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,12 +33,26 @@ void	short_sort(t_list **stack)
 		swap(stack, 'a');
 }
 
+static void	choose_alg(t_list **stack_a, t_list **stack_b)
+{
+	int	len;
+
+	len = stack_len(*stack_a);
+	if (len == 2)
+		short_sort(stack_a);
+	else if (len <= 10)
+		turkish_sort(stack_a, stack_b);
+	else if (len > 10 && len < 900)
+		quick_sort(stack_a, stack_b);
+	else
+		radix_sort(stack_a, stack_b);
+}
+
 int	main(int argc, char **argv)
 {
 	t_list	*stack_a;
 	t_list	*stack_b;
 	char	**args;
-	int		len;
 
 	args = argv + 1;
 	if (argc == 2)
@@ -52,13 +66,7 @@ int	main(int argc, char **argv)
 		return (1);
 	}
 	normalize_stack(stack_a);
-	len = stack_len(stack_a);
-	if (len == 2)
-		short_sort(&stack_a);
-	else if (len <= 10)
-		turkish_sort(&stack_a, &stack_b);
-	else
-		quick_sort(&stack_a, &stack_b);
+	choose_alg(&stack_a, &stack_b);
 	free_all(stack_a),
 	free_all(stack_b);
 	if (argc == 2)
