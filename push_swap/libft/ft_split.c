@@ -6,7 +6,7 @@
 /*   By: mcuello <mcuello@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/10 12:08:24 by mcuello           #+#    #+#             */
-/*   Updated: 2024/12/17 16:16:09 by mcuello          ###   ########.fr       */
+/*   Updated: 2025/05/13 17:20:56 by mcuello          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ static size_t	word_len(char const *s, char c)
 	return (i);
 }
 
-static size_t	amountof_words(char const *s, char c)
+static size_t	amount_of_words(char const *s, char c)
 {
 	size_t	i;
 
@@ -57,12 +57,12 @@ char	**ft_split(char const *s, char c)
 
 	if (!s)
 		return (NULL);
-	array = malloc(sizeof(char *) * (amountof_words(s, c) + 1));
+	array = malloc(sizeof(char *) * (amount_of_words(s, c) + 1));
 	if (!array)
 		return (NULL);
 	i = 0;
 	start = 0;
-	while (i < amountof_words(s, c))
+	while (i < amount_of_words(s, c))
 	{
 		while (s[start] == c)
 			start++;
