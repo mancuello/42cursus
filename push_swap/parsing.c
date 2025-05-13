@@ -6,7 +6,7 @@
 /*   By: mcuello <mcuello@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/08 14:52:07 by mcuello           #+#    #+#             */
-/*   Updated: 2025/05/13 15:58:12 by mcuello          ###   ########.fr       */
+/*   Updated: 2025/05/13 16:56:58 by mcuello          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,12 @@ static t_list	*create_stack(char **argv)
 	t_list	*stack_a;
 	t_list	*head_dir;
 
+	i = 1;
+	while (argv[i])
+	{
+		ft_printf("Parseando argv[%i]: %s\n", i, argv[i]);
+		i++;
+	}
 	i = 0;
 	while (argv[++i])
 	{
