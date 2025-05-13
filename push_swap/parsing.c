@@ -6,7 +6,7 @@
 /*   By: mcuello <mcuello@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/08 14:52:07 by mcuello           #+#    #+#             */
-/*   Updated: 2025/05/09 01:11:38 by mcuello          ###   ########.fr       */
+/*   Updated: 2025/05/13 15:58:12 by mcuello          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,18 +72,18 @@ static int	repeated(t_list *stack)
 	return (0);
 }
 
-t_list	*parse_arg(char **argv)
+static t_list	*create_stack(char **argv)
 {
-	t_list			*head_dir;
-	t_list			*stack_a;
-	int				number;
-	unsigned int	i;
+	int		number;
+	int		i;
+	t_list	*stack_a;
+	t_list	*head_dir;
 
 	i = 0;
 	while (argv[++i])
 	{
 		if (!safe_atoi(argv[i], &number))
-			return (write(2, "Error\n", 6), free_all(stack_a), NULL);
+			return (write(2, "Error\n", 6), NULL);
 		if (i == 1)
 		{
 			head_dir = ft_lstnew(number);
@@ -96,6 +96,16 @@ t_list	*parse_arg(char **argv)
 		}
 	}
 	stack_a = head_dir;
+	return (stack_a);
+}
+
+t_list	*parse_arg(char **argv)
+{
+	t_list			*stack_a;
+
+	stack_a = create_stack(argv);
+	if (!stack_a)
+		return (NULL);
 	if (repeated(stack_a))
 		return (write(2, "Error\n", 6), free_all(stack_a), NULL);
 	return (stack_a);

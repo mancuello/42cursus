@@ -6,7 +6,7 @@
 /*   By: mcuello <mcuello@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/14 11:29:24 by mcuello           #+#    #+#             */
-/*   Updated: 2025/05/08 18:24:51 by mcuello          ###   ########.fr       */
+/*   Updated: 2025/05/13 15:33:11 by mcuello          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ t_list	*ft_lstnew(int n)
 
 	head = malloc(sizeof(t_list));
 	if (!head)
-		perror("Fallo en la asignacion de memoria");
+		write(2, "Error\n", 6);
 	head->data = n;
 	head->index = 0;
 	head->next = NULL;

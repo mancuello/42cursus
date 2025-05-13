@@ -6,13 +6,13 @@
 /*   By: mcuello <mcuello@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/16 12:57:52 by mcuello           #+#    #+#             */
-/*   Updated: 2024/12/16 14:12:21 by mcuello          ###   ########.fr       */
+/*   Updated: 2025/05/13 15:31:46 by mcuello          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-t_list	*ft_lstnew(void *content)
+/* t_list	*ft_lstnew(void *content)
 {
 	t_list	*node;
 
@@ -22,4 +22,4 @@ t_list	*ft_lstnew(void *content)
 	(*node).content = content;
 	(*node).next = NULL;
 	return (node);
-}
+} */

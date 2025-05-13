@@ -6,7 +6,7 @@
 /*   By: mcuello <mcuello@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/14 11:16:32 by mcuello           #+#    #+#             */
-/*   Updated: 2025/05/12 23:36:18 by mcuello          ###   ########.fr       */
+/*   Updated: 2025/05/13 14:44:07 by mcuello          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,9 @@
 # include <stdlib.h>
 # include <stdio.h>
 # include <limits.h>
-# include "libft/include/libft.h"
-# include "libft/include/get_next_line.h"
-# include "libft/include/ft_printf.h"
+# include "libft.h"
+# include "get_next_line.h"
+# include "ft_printf.h"
 
 typedef struct s_list
 {
