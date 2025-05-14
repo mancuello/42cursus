@@ -6,7 +6,7 @@
 /*   By: mcuello <mcuello@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/14 11:16:32 by mcuello           #+#    #+#             */
-/*   Updated: 2025/05/13 14:44:07 by mcuello          ###   ########.fr       */
+/*   Updated: 2025/05/14 15:15:58 by mcuello          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,5 +58,6 @@ void			quick_sort(t_list **a, t_list **b);
 void			initial_push(t_list **stack_a, t_list **stack_b, int len);
 int				min_index(t_list *stack, unsigned int index);
 int				found_index(t_list *stack, unsigned int index);
+void			free_split(char **arr);
 
 #endif

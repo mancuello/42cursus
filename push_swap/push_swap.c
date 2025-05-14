@@ -6,26 +6,11 @@
 /*   By: mcuello <mcuello@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/13 17:48:51 by mcuello           #+#    #+#             */
-/*   Updated: 2025/05/13 21:33:09 by mcuello          ###   ########.fr       */
+/*   Updated: 2025/05/14 15:16:46 by mcuello          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-static void	free_split(char **arr)
-{
-	int	i;
-
-	i = 0;
-	if (!arr)
-		return ;
-	while (arr[i])
-	{
-		free(arr[i]);
-		i++;
-	}
-	free(arr);
-}
 
 void	short_sort(t_list **stack)
 {

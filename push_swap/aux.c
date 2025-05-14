@@ -6,7 +6,7 @@
 /*   By: mcuello <mcuello@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/12 23:27:59 by mcuello           #+#    #+#             */
-/*   Updated: 2025/05/12 23:35:06 by mcuello          ###   ########.fr       */
+/*   Updated: 2025/05/14 15:17:58 by mcuello          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,4 +52,19 @@ int	found_index(t_list *stack, unsigned int index)
 		stack = stack->next;
 	}
 	return (0);
+}
+
+void	free_split(char **arr)
+{
+	int	i;
+
+	i = 0;
+	if (!arr)
+		return ;
+	while (arr[i])
+	{
+		free(arr[i]);
+		i++;
+	}
+	free(arr);
 }

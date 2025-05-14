@@ -6,7 +6,7 @@
 /*   By: mcuello <mcuello@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/08 20:00:11 by mcuello           #+#    #+#             */
-/*   Updated: 2025/05/13 00:27:21 by mcuello          ###   ########.fr       */
+/*   Updated: 2025/05/14 15:27:42 by mcuello          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,22 +62,37 @@ int	process_stdin(t_list **stack_a, t_list **stack_b)
 	return (1);
 }
 
-int	main(int argc, char **argv)
+static void	check_sorted(t_list *stack_a, t_list *stack_b)
 {
-	t_list	*stack_a;
-	t_list	*stack_b;
-
-	if (argc < 2)
-		return (0);
-	stack_a = parse_arg(argv);
-	stack_b = NULL;
-	normalize_stack(stack_a);
-	if (!process_stdin(&stack_a, &stack_b))
-		return (1);
 	if (sorted(stack_a) && !stack_b)
 		write(1, "OK\n", 3);
 	else
 		write(1, "KO\n", 3);
+}
+
+int	main(int argc, char **argv)
+{
+	t_list	*stack_a;
+	t_list	*stack_b;
+	char	**args;
+
+	args = argv + 1;
+	if (argc == 2)
+		args = ft_split(argv[1], ' ');
+	stack_b = NULL;
+	stack_a = parse_arg(args);
+	if (!stack_a)
+	{
+		if (argc == 2)
+			free_split(args);
+		return (1);
+	}
+	if (argc == 2)
+		free_split(args);
+	normalize_stack(stack_a);
+	if (!process_stdin(&stack_a, &stack_b))
+		return (1);
+	check_sorted(stack_a, stack_b);
 	free_all(stack_a);
 	free_all(stack_b);
 	return (0);
