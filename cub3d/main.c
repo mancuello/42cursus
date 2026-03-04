@@ -13,15 +13,15 @@ int	main(int argc, char **argv)
 
 	if (argc != 2)
 	{
-		printf("Uso: %s <mapa.ber>\n", argv[0]);
+		printf("Uso: %s <mapa.cub>\n", argv[0]);
 		return (1);
 	}
-	/* if (check_extension(argv[1]) == -1)
-		return (ft_error("Error: El archivo debe tener la extension .ber\n"));
- */	if (read_map(argv[1], &map) == -1)
+	if (check_extension(argv[1]) == -1)
+		return (ft_error("Error: El archivo debe tener la extension .cub\n"));
+	if (read_map(argv[1], &map) == -1)
 		return (ft_error("Error: No se pudo leer el mapa.\n"));
-/* 	printf("verificando reglas del mapa....\n");
-	if (check_map_rules(&map) == -1)
+	printf("verificando reglas del mapa....\n");
+/* 	if (check_map_rules(&map) == -1)
 	{
 		free_map(&map);
 		return (ft_error("Error: Mapa inválido.\n"));

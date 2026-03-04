@@ -1,5 +1,5 @@
 #include "cub3d.h"
-
+//Esta implementacion solo lee hasta nulo o newline.
 int	ft_strlen2(char *str)
 {
 	int	i;
@@ -13,13 +13,13 @@ int	ft_strlen2(char *str)
 static void render_images(t_game *game, int x, int y)
 {
 	mlx_put_image_to_window(game->mlx, game->win, game->floor,
-		x * TILE_SIZE, y * TILE_SIZE);
+		x * 32, y * 32);
 	if (game->map->map[y][x] == '1')
 		mlx_put_image_to_window(game->mlx, game->win, game->wall,
-			x * TILE_SIZE, y * TILE_SIZE);
+			x * 32, y * 32);
 	else if (game->map->map[y][x] == 'E')
 		mlx_put_image_to_window(game->mlx, game->win, game->exit,
-			x * TILE_SIZE, y * TILE_SIZE);
+			x * 32, y * 32);
 	else if (game->map->map[y][x] == 'P')
 	{
 		if (game->player_x == -1 && game->player_y == -1)
@@ -28,7 +28,7 @@ static void render_images(t_game *game, int x, int y)
 			game->player_y = y;
 		}
 		mlx_put_image_to_window(game->mlx, game->win, game->player,
-			x * TILE_SIZE, y * TILE_SIZE);
+			x * 32, y * 32);
 	}
 }
 
@@ -60,8 +60,8 @@ int	init_game(t_game *game, t_map *map)
 		return (ft_error("Error: No se pudo inicilizar la Minilibx.\n"));
 	printf("Minilib inicializada correctamente.\n");
 	printf("width: %d height: %d\n", map->width, map->height);
-	game->win = mlx_new_window(game->mlx, map->width * TILE_SIZE,
-			map->height * TILE_SIZE, "cub3d");
+	game->win = mlx_new_window(game->mlx, RES_WIDTH,
+			RES_HEIGHT, "cub3d");
 	if (!game->win)
 		return (ft_error("Error: no se pude crear la ventana.\n"));
 	if (load_sprites(game) != 0)

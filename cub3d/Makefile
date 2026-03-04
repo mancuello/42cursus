@@ -6,26 +6,27 @@
 #    By: mcuello <mcuello@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/02/25 21:31:23 by mcuello           #+#    #+#              #
-#    Updated: 2026/03/03 21:23:44 by mcuello          ###   ########.fr        #
+#    Updated: 2026/03/04 18:32:22 by mcuello          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME		= cub3d
 
 SRC			= main.c \
-			  game_loop.c \
+			  extension_rules.c \
 			  map.c \
-			  get_next_line.c \
-			  get_next_line_utils.c \
+			  game_loop.c \
 			  hooks.c \
 			  player_moves.c \
 			  load_textures.c \
+			  get_next_line.c \
+			  get_next_line_utils.c \
 
 OBJ			= $(SRC:.c=.o)
 
 CC			= cc
 
-CFLAGS		= -Wall -Wextra -Werror -Iinclude -Imlx
+CFLAGS		= -Wall -Wextra -Werror -Iinclude -Imlx -Ilibft
 
 MLX_DIR		= mlx
 
@@ -33,13 +34,20 @@ MLX_LIB		= $(MLX_DIR)/libmlx.a
 
 MLX_FLAGS	= -Lmlx -lmlx -lXext -lX11
 
-all: $(MLX_LIB) $(NAME)
+LIB_DIR		= libft
+
+LIB		= $(LIB_DIR)/libft.a
+
+all: $(LIB) $(MLX_LIB) $(NAME)
+
+$(LIB):
+	@make -C $(LIB_DIR) --no-print-directory
 
 $(MLX_LIB):
 	@make -C $(MLX_DIR) --no-print-directory
 
 $(NAME): $(OBJ)
-	$(CC) $(OBJ) $(MLX_FLAGS) -o $(NAME)
+	$(CC) $(OBJ) -L$(LIB_DIR) -lft $(MLX_FLAGS) -o $(NAME)
 
 %.o: %.c
 	$(CC) $(CFLAGS) -c $< -o $@
@@ -50,5 +58,6 @@ clean:
 fclean: clean
 	rm -f $(NAME)
 	make -C $(MLX_DIR) clean --no-print-directory
+	make -C $(LIB_DIR) clean --no-print-directory
 
 re: fclean all

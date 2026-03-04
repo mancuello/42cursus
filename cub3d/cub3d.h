@@ -1,13 +1,16 @@
 #ifndef CUB3D_H
 # define CUB3D_H
 
-# define TILE_SIZE 32
+# define RES_WIDTH 640
+# define RES_HEIGHT 400
 
 # include <stdlib.h>
 # include <stdio.h>
 # include <unistd.h>
 # include <fcntl.h>
+# include <stddef.h>
 # include <mlx.h>
+# include "libft/libft.h"
 # include "key_codes.h"
 
 typedef struct s_map
@@ -48,5 +51,6 @@ int		ft_error(char *str);
 int		load_sprites(t_game *game);
 void	move_player(t_game *game, int dx, int dy);
 int		ft_strlen2(char *str);
+int 	check_extension(char *str);
 
 #endif
