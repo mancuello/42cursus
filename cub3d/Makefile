@@ -6,7 +6,7 @@
 #    By: mcuello <mcuello@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/02/25 21:31:23 by mcuello           #+#    #+#              #
-#    Updated: 2026/03/04 18:32:22 by mcuello          ###   ########.fr        #
+#    Updated: 2026/03/05 15:34:50 by mcuello          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,6 +14,7 @@ NAME		= cub3d
 
 SRC			= main.c \
 			  extension_rules.c \
+			  fd_parser.c \
 			  map.c \
 			  game_loop.c \
 			  hooks.c \

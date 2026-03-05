@@ -10,6 +10,7 @@ int	main(int argc, char **argv)
 {
 	t_map	map;
 	t_game	game;
+	t_fd	fd_content;
 
 	if (argc != 2)
 	{
@@ -18,6 +19,8 @@ int	main(int argc, char **argv)
 	}
 	if (check_extension(argv[1]) == -1)
 		return (ft_error("Error: El archivo debe tener la extension .cub\n"));
+	if (read_fd(argv[1], &fd_content) == -1)
+		return (-1);
 	if (read_map(argv[1], &map) == -1)
 		return (ft_error("Error: No se pudo leer el mapa.\n"));
 	printf("verificando reglas del mapa....\n");
