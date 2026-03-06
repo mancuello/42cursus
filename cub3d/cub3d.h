@@ -13,6 +13,15 @@
 # include "libft/libft.h"
 # include "key_codes.h"
 
+	typedef struct s_map
+	{
+		char 	**map;
+		int		width;
+		int		height;
+		int		player_count;
+		int		exit_count;
+	}	t_map;
+
 	typedef struct s_fd
 	{
 		int 	height;
@@ -24,18 +33,10 @@
 		char	*ea_texture;
 		char	*floor_color;
 		char	*ceiling_color;
-		t_map	map;
+		t_map	*map;
 	}	t_fd;
 
 
-	typedef struct s_map
-	{
-		char 	**map;
-		int		width;
-		int		height;
-		int		player_count;
-		int		exit_count;
-	}	t_map;
 
 	typedef struct s_game
 	{
